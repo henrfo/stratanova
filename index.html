@@ -1,32 +1,147 @@
+# Final version: clean, sleek tech design with Inter font and faded logo
+
+final_sleek_html = """
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Strata Nova</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        background: #f7f9fb;
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-      }
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5em;
-      }
-      p {
-        font-size: 1.2rem;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strata Nova</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #dfefff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .logo {
+      width: 90px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      opacity: 0.6;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 1.2rem 0;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #a9c8e6;
+      font-size: 1rem;
+      transition: color 0.3s ease, letter-spacing 0.2s ease;
+    }
+    nav a:hover {
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="content">
+    <img src="stratanova_logo_transparent.png" alt="Strata Nova logo" class="logo" />
     <h1>Strata Nova</h1>
-    <p>Innovating the future. Website coming soon.</p>
-  </body>
+    <nav>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Insights</a>
+    </nav>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let points = [];
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initPoints();
+    }
+
+    function initPoints() {
+      points = [];
+      for (let i = 0; i < 100; i++) {
+        points.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.15,
+          vy: (Math.random() - 0.5) * 0.15
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < points.length; i++) {
+        let p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = '#99bbdd';
+        ctx.fill();
+
+        for (let j = i + 1; j < points.length; j++) {
+          let q = points[j];
+          let dx = p.x - q.x;
+          let dy = p.y - q.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 90) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(200, 230, 255, ${1 - dist / 90})`;
+            ctx.lineWidth = 0.4;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+  </script>
+</body>
 </html>
+"""
+
+final_sleek_path = "/mnt/data/index_sleek_stratanova.html"
+with open(final_sleek_path, "w") as f:
+    f.write(final_sleek_html)
+
+final_sleek_path
