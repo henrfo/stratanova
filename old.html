@@ -1,0 +1,133 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strata Nova</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #cceeff;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 200;
+      overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem 0;
+      letter-spacing: 1px;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #99ccff;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="content">
+    <img src="stratanova_logo.png" alt="Strata Nova logo" class="logo" />
+    <h1>Strata Nova</h1>
+    <nav>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Insights</a>
+    </nav>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let points = [];
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initPoints();
+    }
+
+    function initPoints() {
+      points = [];
+      for (let i = 0; i < 100; i++) {
+        points.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < points.length; i++) {
+        let p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#66ccff';
+        ctx.fill();
+
+        for (let j = i + 1; j < points.length; j++) {
+          let q = points[j];
+          let dx = p.x - q.x;
+          let dy = p.y - q.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(102, 204, 255, ${1 - dist / 100})`;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>
+"""
