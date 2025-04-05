@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Strata Nova</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
@@ -13,9 +12,9 @@
       width: 100%;
       height: 100%;
       background: #000;
-      color: #e0f0ff;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
+      color: #cceeff;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 200;
       overflow: hidden;
     }
     canvas {
@@ -35,35 +34,32 @@
       text-align: center;
     }
     .logo {
-      width: 100px;
+      width: 120px;
       height: auto;
-      margin-bottom: 1.2rem;
-      filter: drop-shadow(0 0 4px #66ccff);
+      margin-bottom: 1.5rem;
     }
     h1 {
       font-size: 2.5rem;
       margin: 0 0 1rem 0;
-      font-weight: 500;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
     nav a {
       margin: 0 1rem;
       text-decoration: none;
-      color: #99ccee;
+      color: #99ccff;
       font-size: 1rem;
-      transition: color 0.3s ease, letter-spacing 0.2s ease;
+      transition: color 0.3s;
     }
     nav a:hover {
       color: #ffffff;
-      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
   <canvas id="bg"></canvas>
   <div class="content">
-    <img src="stratanova_logo_transparent.png" alt="Strata Nova logo" class="logo" />
-    <h1>Strata Nova.</h1>
+    <img src="stratanova_logo.png" alt="Strata Nova logo" class="logo" />
+    <h1>Strata Nova</h1>
     <nav>
       <a href="#">Contact</a>
       <a href="#">About</a>
@@ -92,8 +88,8 @@
         points.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.2,
-          vy: (Math.random() - 0.5) * 0.2
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3
         });
       }
     }
@@ -108,8 +104,8 @@
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-        ctx.fillStyle = '#99ccff';
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#66ccff';
         ctx.fill();
 
         for (let j = i + 1; j < points.length; j++) {
@@ -121,8 +117,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(200, 230, 255, ${1 - dist / 100})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(102, 204, 255, ${1 - dist / 100})`;
             ctx.stroke();
           }
         }
