@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strata Nova</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+  <title>STRATA NOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
@@ -16,6 +16,17 @@
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       overflow: hidden;
+
+      h1 {
+  text-transform: uppercase;
+  font-family: 'Exo 2', sans-serif;
+  color: #ffffff;
+  font-size: 2.3rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0 0 1.2rem 0;
+}
+
     }
 
     canvas {
@@ -42,26 +53,18 @@
       margin-bottom: 1.5rem;
       opacity: 0.85;
     }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.6rem;
-      margin: 0 0 1.2rem 0;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-    }
-
+    
     nav a {
       margin: 0 1rem;
       text-decoration: none;
-      color: #a9c8e6;
+      color: #ffffff;
       font-size: 1rem;
-      transition: color 0.3s ease, letter-spacing 0.2s ease;
+      transition: color 0.1s ease, letter-spacing 0.5s ease;
     }
 
     nav a:hover {
-      color: #ffffff;
-      letter-spacing: 1px;
+      color: #a9c8e6;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
@@ -85,12 +88,20 @@
     let points = [];
 
     function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-      initPoints();
-    }
+  width = window.innerWidth;
+  height = window.innerHeight;
+
+  // Set canvas dimensions at higher resolution
+  canvas.width = width * window.devicePixelRatio;
+  canvas.height = height * window.devicePixelRatio;
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
+
+  // Scale canvas context for crisp rendering
+  ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+
+  initPoints(); // Move this *after* resizing to match updated dimensions
+}
 
     function initPoints() {
       points = [];
@@ -123,12 +134,12 @@
           let dx = p.x - q.x;
           let dy = p.y - q.y;
           let dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
+          if (dist < 150) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(200, 230, 255, ${1 - dist / 90})`;
-            ctx.lineWidth = 0.4;
+            ctx.strokeStyle = `rgba(160, 200, 255, ${1 - dist / 120})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
