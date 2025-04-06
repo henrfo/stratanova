@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – Strata Nova</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .top-nav {
+      text-align: center;
+      margin-top: 2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .top-nav .logo-nav {
+      width: 70px;
+      height: auto;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .top-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .top-nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: color 0.2s ease;
+    }
+
+    .top-nav ul li a:hover {
+      color: #dfefff;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: calc(100vh - 160px); /* Adjusted for nav height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-family: 'Exo 2', sans-serif;
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 2.3rem;
+      color: #ffffff;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .content p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .content p a {
+      color: #ccc;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+    <ul>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="services.html">Services</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Content -->
+  <div class="content">
+    <h1>Services</h1>
+  </div>
+
+  <script src="scripts/neuronAnimation.js"></script>
+</body>
+</html>

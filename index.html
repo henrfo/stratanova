@@ -16,17 +16,16 @@
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       overflow: hidden;
+    }
 
-      h1 {
-  text-transform: uppercase;
-  font-family: 'Exo 2', sans-serif;
-  color: #ffffff;
-  font-size: 2.3rem;
-  font-weight: 300;
-  letter-spacing: 1px;
-  margin: 0 0 1.2rem 0;
-}
-
+    h1 {
+      text-transform: uppercase;
+      font-family: 'Exo 2', sans-serif;
+      color: #ffffff;
+      font-size: 2.3rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin: 0 0 1.2rem 0;
     }
 
     canvas {
@@ -53,7 +52,7 @@
       margin-bottom: 1.5rem;
       opacity: 0.85;
     }
-    
+
     nav a {
       margin: 0 1rem;
       text-decoration: none;
@@ -71,14 +70,14 @@
 <body>
   <canvas id="bg"></canvas>
   <div class="content">
-    <img src="stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo" />
+    <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo" />
     <h1>Strata Nova</h1>
     <nav>
-      <a href="#">Contact</a>
-      <a href="#">About</a>
-      <a href="#">Projects</a>
-      <a href="#">Insights</a>
-      <a href="#">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="insights.html">Insights</a>
+      <a href="services.html">Services</a>
     </nav>
   </div>
 
@@ -89,20 +88,15 @@
     let points = [];
 
     function resize() {
-  width = window.innerWidth;
-  height = window.innerHeight;
-
-  // Set canvas dimensions at higher resolution
-  canvas.width = width * window.devicePixelRatio;
-  canvas.height = height * window.devicePixelRatio;
-  canvas.style.width = width + 'px';
-  canvas.style.height = height + 'px';
-
-  // Scale canvas context for crisp rendering
-  ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-
-  initPoints(); // Move this *after* resizing to match updated dimensions
-}
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+      initPoints();
+    }
 
     function initPoints() {
       points = [];
@@ -154,3 +148,4 @@
   </script>
 </body>
 </html>
+

@@ -3,19 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Strata Nova</title>
+  <title>About – Strata Nova</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .top-nav {
+      text-align: center;
+      margin-top: 2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .top-nav .logo-nav {
+      width: 70px;
+      height: auto;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .top-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .top-nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: color 0.2s ease;
+    }
+
+    .top-nav ul li a:hover {
+      color: #dfefff;
+    }
+
+    /* Page Content */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 1rem 5rem;
+    }
+
+    h1, h2 {
+      text-transform: uppercase;
+      font-family: 'Exo 2', sans-serif;
+      color: #ffffff;
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-top: 3rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-pic {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+
+    .email a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: #dfefff;
+    }
+  </style>
 </head>
 <body>
   <canvas id="bg"></canvas>
+
+  <!-- Top Navigation (Visible on subpages) -->
+  <nav class="top-nav">
+    <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+    <ul>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="services.html">Services</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
   <div class="content">
-    <img src="stratanova_logo_symbol_only.png" alt="Strata Nova symbol" class="logo" />
     <h1>About</h1>
-    <p style="max-width: 600px; color: #ccc;">
-      Strata Nova is an independent initiative at the intersection of psychology, neuroscience, and machine learning. The goal is to explore human cognition, memory, and decision-making under pressure through empirical work and creative computation.
+
+    <h2>About Strata Nova</h2>
+    <section id="about">
+      <p><strong>Strata Nova</strong> is a space for exploring how neuroscience, machine learning, and human experience come together. It’s a project in motion — shaped by study, research, and curiosity.</p>
+      <p>Rather than waiting until ideas are fully formed or formalized, Strata Nova is about learning in the open. It's a place to think, share, and build — while still figuring things out. The goal is to connect knowledge across disciplines, and to invite others into that process over time.</p>
+      <p>It began as a student-led initiative, but it’s not limited to that. Strata Nova reflects a belief that learning and doing don’t have to be separate — that research, design, and insight can grow side by side, even in early stages.</p>
+      <p>At its core, it’s about staying curious — and making that curiosity visible.</p>
+    </section>
+
+    <h1>People</h1>
+    <img src="assets/henrik.jpg" alt="Your profile" class="profile-pic" />
+    <h3>Henrik</h3>
+    <div class="email">
+      <a href="mailto:henrik@stratanova.no">henrik@stratanova.no</a>
+    </div>
+    <p>
+      I'm a psychology and computer science student at the University of Oslo, with a background in Norwegian film.
     </p>
+    <p>
+      My research interests lie at the intersection of cognitive neuroscience, neuroimaging, machine learning, and data science. I’m particularly interested in vision, perception, memory, decision-making, and predictive modeling, using statistical and computational methods to study brain dynamics.
+    </p>
+    <p>
+      In addition to Norway, my exchange studies in Japan, Australia, and the US have given me a broader perspective on different approaches to these questions.
+    </p>
+    <p>
+      At the core of my work is an interest in how psychology, neuroscience, and technology come together to deepen our understanding of cognition, behavior and human interaction with the world.
+    </p>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/henrikformoe/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://orcid.org/0009-0000-0909-5139" target="_blank" rel="noopener noreferrer" title="ORCID">
+        <i class="fab fa-orcid"></i>
+      </a>
+    </div>
   </div>
+
   <script src="scripts/neuronAnimation.js"></script>
 </body>
 </html>
