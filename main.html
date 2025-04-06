@@ -25,60 +25,51 @@
       z-index: 0;
     }
 
-    .content {
+    .hero {
       position: relative;
       z-index: 1;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 0 1rem;
     }
 
-    .logo {
-      width: 70px;
+    .hero img {
+      width: 90px;
       height: auto;
-      margin-bottom: 1rem;
-      opacity: 0.85;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
     }
 
-    h1 {
+    .hero h1 {
       font-family: 'Exo 2', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 300;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 0 0 1.5rem 0;
-      color: white;
+      font-size: 3.2rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: #ffffff;
+      margin-bottom: 2rem;
     }
 
-    nav {
+    .hero nav {
       display: flex;
-      gap: 1.2rem;
+      gap: 2rem;
       flex-wrap: wrap;
       justify-content: center;
     }
 
-    nav a {
+    .hero nav a {
       color: #ffffff;
-      font-size: 0.75rem;
+      font-size: 1rem;
       text-decoration: none;
+      font-weight: 300;
       transition: color 0.2s ease, letter-spacing 0.2s ease;
     }
 
-    .top-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem; /* or use 3rem for more breathing room */
-  flex-wrap: wrap;
-}
-
-
-    nav a:hover {
+    .hero nav a:hover {
       color: #a9c8e6;
       letter-spacing: 0.5px;
     }
@@ -87,11 +78,11 @@
 <body>
   <canvas id="bg"></canvas>
 
-  <div class="content">
-    <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo" />
+  <div class="hero">
+    <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" />
     <h1>Strata Nova</h1>
     <nav>
-      <a href="index.html">Main</a>
+      <a href="main.html">Main</a>
       <a href="contact.html">Contact</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
