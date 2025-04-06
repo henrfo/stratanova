@@ -8,7 +8,8 @@ html, body {
     color: white;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    overflow: hidden;
+    overflow-x: hidden;  /* prevent sideways scroll */
+    overflow-y: auto;    /* allow vertical scroll */
   }
   
   /* Background canvas stays behind content */
@@ -23,13 +24,10 @@ html, body {
   .content {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-    padding: 0 1rem;
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem 1rem;
+    text-align: left;
   }
   
   /* Logo image */
@@ -113,4 +111,4 @@ html, body {
     color: #dfefff;
     border-color: #dfefff;
   }
-  
+    
