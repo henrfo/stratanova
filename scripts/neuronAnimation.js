@@ -22,20 +22,27 @@ for (let i = 0; i < totalPoints; i++) {
     y: Math.random() * height,
     vx: (Math.random() - 0.5) * 0.12,
     vy: (Math.random() - 0.5) * 0.12,
-    fired: false,
-    fireProgress: 0
   });
 }
-
-let current = randomPoint();
-let next = randomPoint();
-let progress = 0;
-let firing = true;
-const duration = 250;
 
 function randomPoint() {
   return points[Math.floor(Math.random() * points.length)];
 }
+
+function findNearbyPoint(from) {
+  let candidates = points
+    .map(p => ({ p, dist: Math.hypot(p.x - from.x, p.y - from.y) }))
+    .filter(entry => entry.dist > 20 && entry.dist < 150); // in local range
+  if (candidates.length === 0) return randomPoint();
+  candidates.sort((a, b) => a.dist - b.dist);
+  const closeFew = candidates.slice(0, Math.min(5, candidates.length));
+  return closeFew[Math.floor(Math.random() * closeFew.length)].p;
+}
+
+let current = randomPoint();
+let next = findNearbyPoint(current);
+let progress = 0;
+let duration = 250;
 
 function drawBackgroundNet() {
   for (let i = 0; i < points.length; i++) {
@@ -104,8 +111,9 @@ function drawNeuronEffect() {
   progress++;
   if (progress >= duration) {
     current = next;
-    next = randomPoint();
+    next = findNearbyPoint(current);
     progress = 0;
+    duration = 220 + Math.random() * 100; // slight variability
   }
 }
 
@@ -117,3 +125,4 @@ function draw() {
 }
 
 draw();
+
