@@ -10,18 +10,20 @@ function resize() {
   canvas.style.width = width + "px";
   canvas.style.height = height + "px";
   ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
 }
 resize();
 window.addEventListener("resize", resize);
 
 let points = [];
-const totalPoints = 115;
+const totalPoints = 140;
 for (let i = 0; i < totalPoints; i++) {
   points.push({
     x: Math.random() * width,
     y: Math.random() * height,
-    vx: (Math.random() - 0.5) * 0.12,
-    vy: (Math.random() - 0.5) * 0.12,
+    vx: (Math.random() - 0.5) * 0.1,
+    vy: (Math.random() - 0.5) * 0.1,
   });
 }
 
@@ -32,7 +34,7 @@ function randomPoint() {
 function findNearbyPoint(from) {
   let candidates = points
     .map(p => ({ p, dist: Math.hypot(p.x - from.x, p.y - from.y) }))
-    .filter(entry => entry.dist > 20 && entry.dist < 150); // in local range
+    .filter(entry => entry.dist > 20 && entry.dist < 140);
   if (candidates.length === 0) return randomPoint();
   candidates.sort((a, b) => a.dist - b.dist);
   const closeFew = candidates.slice(0, Math.min(5, candidates.length));
@@ -42,7 +44,7 @@ function findNearbyPoint(from) {
 let current = randomPoint();
 let next = findNearbyPoint(current);
 let progress = 0;
-let duration = 250;
+let duration = 240;
 
 function drawBackgroundNet() {
   for (let i = 0; i < points.length; i++) {
@@ -57,18 +59,18 @@ function drawBackgroundNet() {
       let dx = p.x - q.x;
       let dy = p.y - q.y;
       let dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 115) {
+      if (dist < 120) {
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(q.x, q.y);
-        ctx.strokeStyle = `rgba(160, 200, 255, ${0.06 + (1 - dist / 115) * 0.3})`;
+        ctx.strokeStyle = `rgba(160, 200, 255, ${0.08 + (1 - dist / 120) * 0.25})`;
         ctx.lineWidth = 0.45;
         ctx.stroke();
       }
     }
 
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, 1.1, 0, Math.PI * 2);
     ctx.fillStyle = '#99bbdd';
     ctx.shadowColor = 'transparent';
     ctx.shadowBlur = 0;
@@ -77,11 +79,11 @@ function drawBackgroundNet() {
 }
 
 function drawNeuronEffect() {
-  const pulse = 2 + Math.sin(progress / duration * Math.PI) * 2.2;
+  const pulse = 2 + Math.sin(progress / duration * Math.PI) * 2.1;
 
   ctx.beginPath();
   ctx.arc(current.x, current.y, pulse, 0, Math.PI * 2);
-  ctx.fillStyle = `rgba(255, 255, 255, ${0.15 + 0.25 * Math.sin(progress / duration * Math.PI)})`;
+  ctx.fillStyle = `rgba(255, 255, 255, ${0.14 + 0.24 * Math.sin(progress / duration * Math.PI)})`;
   ctx.shadowColor = '#ffffff';
   ctx.shadowBlur = 8;
   ctx.fill();
@@ -91,17 +93,17 @@ function drawNeuronEffect() {
     let dx = current.x - p.x;
     let dy = current.y - p.y;
     let dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < 150 && dist > 10) {
+    if (dist < 140 && dist > 12) {
       ctx.beginPath();
       ctx.moveTo(current.x, current.y);
       ctx.lineTo(p.x, p.y);
-      ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + 0.12 * Math.sin(progress / duration * Math.PI)})`;
-      ctx.lineWidth = 0.6;
+      ctx.strokeStyle = `rgba(255, 255, 255, ${0.07 + 0.14 * Math.sin(progress / duration * Math.PI)})`;
+      ctx.lineWidth = 0.55;
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.07)';
       ctx.shadowColor = '#ffffff';
       ctx.shadowBlur = 4;
       ctx.fill();
@@ -113,7 +115,7 @@ function drawNeuronEffect() {
     current = next;
     next = findNearbyPoint(current);
     progress = 0;
-    duration = 220 + Math.random() * 100; // slight variability
+    duration = 220 + Math.random() * 100;
   }
 }
 
@@ -125,4 +127,3 @@ function draw() {
 }
 
 draw();
-

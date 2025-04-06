@@ -96,6 +96,7 @@
   <script>
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
+
     let width, height;
     let points = [];
 
@@ -112,7 +113,12 @@
 
     function initPoints() {
       points = [];
-      for (let i = 0; i < 130; i++) {
+
+      const area = width * height;
+      const density = 0.00020; // Try values from 0.00008 (sparse) to 0.0002 (dense)
+      const pointCount = Math.floor(area * density);
+
+      for (let i = 0; i < pointCount; i++) {
         points.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -124,6 +130,7 @@
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
+
       for (let i = 0; i < points.length; i++) {
         let p = points[i];
         p.x += p.vx;
@@ -151,6 +158,7 @@
           }
         }
       }
+
       requestAnimationFrame(draw);
     }
 
