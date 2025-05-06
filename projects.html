@@ -117,7 +117,7 @@ color: white;
 /* Project styles */
 .project-card {
     background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 8px;
     padding: 2rem;
     margin-bottom: 2rem;
@@ -205,9 +205,10 @@ color: white;
 /* For mobile screens */
 @media (max-width: 600px) {
     .project-stats {
-        flex-direction: column;<button class="mobile-menu-toggle">☰</button>
+        flex-direction: column;
         align-items: flex-start;
     }
+    
     
     .project-card {
         padding: 1.5rem;
@@ -303,14 +304,23 @@ color: white;
     const navMenu = document.querySelector('.top-nav ul');
     
     if (menuToggle && navMenu) {
-      menuToggle.addEventListener('click', function() {
+      menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
         navMenu.classList.toggle('active');
-        // Change hamburger icon to X when menu is open
         menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        console.log('Menu toggled');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.textContent = '☰';
+        }
       });
     }
   });
-</script>
+  </script>
 
 </body>
 </html>
