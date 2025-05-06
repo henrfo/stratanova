@@ -333,3 +333,72 @@
       padding-top: 180px !important; /* More space for stacked nav on mobile */
     }
   }
+
+  /* ==========================================================================
+   Mobile Navigation Enhancements
+   ========================================================================== */
+/* Hamburger menu button for mobile */
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Hide original menu on mobile and set up for menu toggle functionality */
+  .top-nav ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0;
+  }
+  
+  /* Display menu when active class is added (via JavaScript) */
+  .top-nav ul.active {
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  /* Style individual menu items better on mobile */
+  .top-nav ul li {
+    margin: 0.5rem 0 !important;
+    width: 100% !important;
+  }
+  
+  .top-nav ul li a {
+    padding: 0.75rem !important;
+    display: inline-block !important;
+    width: 50% !important; /* Make tap targets bigger */
+    text-align: center !important;
+    border-radius: 4px !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  /* Menu toggle button styling */
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10000;
+  }
+  
+  /* Improve top nav appearance on mobile */
+  .top-nav {
+    padding: 10px 0 !important;
+    text-align: center !important;
+  }
+  
+  /* Adjust logo positioning */
+  .top-nav .logo-nav {
+    margin: 0 auto !important;
+    padding: 0.5rem 0 !important;
+  }
+}

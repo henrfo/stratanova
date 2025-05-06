@@ -205,7 +205,7 @@ color: white;
 /* For mobile screens */
 @media (max-width: 600px) {
     .project-stats {
-        flex-direction: column;
+        flex-direction: column;<button class="mobile-menu-toggle">☰</button>
         align-items: flex-start;
     }
     
@@ -223,6 +223,7 @@ color: white;
 <a href="index.html">
 <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
 </a>
+<button class="mobile-menu-toggle">☰</button>
 <ul>
 <li><a href="contact.html">Contact</a></li>
 <li><a href="about.html">About</a></li>
@@ -265,17 +266,16 @@ color: white;
             <ul>
                 <li>Structural T1-weighted MRI features</li>
                 <li>Inflammatory blood markers</li>
-                <li>PCA-derived components (20 features)</li>
-                <li>Autoencoder-based deviation metrics (reconstruction error + Mahalanobis distance)</li>
+                <li>20 PCA-derived components (from approximately 1200 T1 MRI features)</li>
+                <li>20 autoencoder-based brain deviation metrics (plus reconstruction error + Mahalanobis distance)</li>
             </ul>
         </div>
         
         <div class="project-impact">
             <h3>Why It Matters</h3>
-            <p>By accurately predicting which patients will benefit most from cognitive training, this approach enables:</p>
-            <ul>
-                <li>Improved understanding of features important for recovery, which if validated on a larger sample, may contribute to more personalized rehabilitation strategies.</li>
-            </ul>
+            <p>By accurately predicting which patients will benefit most from cognitive training, this approach improves understanding of features that are important for post-stroke recovery, which if validated on a larger sample, may contribute to more personalized rehabilitation strategies
+
+            </p>
         </div>
         
         <div class="cta-section">
