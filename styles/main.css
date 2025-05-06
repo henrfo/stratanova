@@ -334,6 +334,28 @@
     }
   }
 
+  /* Position logo container to the left */
+  .top-nav > a {
+    display: inline-block !important;
+    float: left !important;
+    margin-left: 1.5rem !important;
+    margin-right: auto !important;
+  }
+  
+  /* Position the logo image to the left */
+  .top-nav .logo-nav {
+    margin: 0 !important;
+    text-align: left !important;
+  }
+  
+  /* Add clearfix to prevent layout issues */
+  .top-nav:after {
+    content: "" !important;
+    display: table !important;
+    clear: both !important;
+  }
+}
+
   /* ==========================================================================
    Mobile Navigation Enhancements
    ========================================================================== */

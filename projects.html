@@ -296,5 +296,21 @@ color: white;
 </footer>
 </div>
 <script src="scripts/neuronAnimation.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.top-nav ul');
+    
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        // Change hamburger icon to X when menu is open
+        menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
