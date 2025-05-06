@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People – Strata Nova</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Link to main CSS file -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <style>
+    /* Keeping only the styles specific to people.html that aren't in main.css */
+    
+    /* Navigation specific to subpages */
+    .top-nav {
+      text-align: center;
+      margin-top: 2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .top-nav .logo-nav {
+      width: 70px;
+      height: auto;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .top-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .top-nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: color 0.2s ease;
+    }
+
+    .top-nav ul li a:hover {
+      color: #dfefff;
+    }
+    
+    /* Additional heading style */
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      text-transform: uppercase;
+      font-family: 'Exo 2', sans-serif;
+      color: #ffffff;
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    /* Profile elements */
+    .profile-pic {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+
+    .email a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: #dfefff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+<!-- Top Navigation (Visible on subpages) -->
+<nav class="top-nav">
+    <a href="index.html">
+      <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+    </a>
+    <ul>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="services.html">Services</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="content">
+    <h2>People</h2>
+    <img src="assets/henrik.jpg" alt="Your profile" class="profile-pic" />
+    <h3>Henrik</h3>
+    <div class="email">
+      <a href="mailto:henrik@stratanova.no">henrik@stratanova.no</a>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/henrikformoe/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://orcid.org/0009-0000-0909-5139" target="_blank" rel="noopener noreferrer" title="ORCID">
+          <i class="fab fa-orcid"></i>
+        </a>
+        <a href="https://www.github.com/henrfo" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+    </div>
+    <p>
+      I'm a psychology and computer science student at the University of Oslo, with a previous background in the Norwegian film industry.
+    </p>
+    <p>
+      My research interests lie at the intersection of cognitive neuroscience, neuroimaging, machine learning, and data science. I'm particularly interested in vision, perception, memory, and decision-making, and overall predictive modeling, using statistical and computational methods to study brain dynamics.
+    </p>
+    <p>
+      In addition to Norway, my exchange studies in Japan, Australia, and the US have broadened my perspective on different approaches to these questions.
+    </p>
+    <p>
+      At the core of my work is an interest in how psychology, neuroscience, and technology come together to deepen our understanding of cognition, behavior, and human interaction with the world.
+    </p>
+
+  </div>
+  
+  <script src="scripts/neuronAnimation.js"></script>
+  
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="copyright">
+        &copy; 2025 Strata Nova AS
+      </div>
+      <div class="contact">
+        <a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

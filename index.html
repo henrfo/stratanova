@@ -74,6 +74,46 @@
       color: #a9c8e6;
       letter-spacing: 0.5px;
     }
+
+    /* Footer Styles */
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1;
+    }
+
+    .footer-content {
+      width: 80%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    /* Responsive adjustments for small screens */
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -87,11 +127,23 @@
     <nav>
       <a href="contact.html">Contact</a>
       <a href="about.html">About</a>
+      <a href="people.html">People</a>
       <a href="projects.html">Projects</a>
       <a href="insights.html">Insights</a>
       <a href="services.html">Services</a>
     </nav>
   </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="copyright">
+        &copy; 2025 Strata Nova AS
+      </div>
+      <div class="contact">
+        <a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const canvas = document.getElementById('bg');

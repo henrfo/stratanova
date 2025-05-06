@@ -7,11 +7,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css" />
   <style>
+    /* Basic structure styles */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    /* Page wrapper for sticky footer */
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    /* Navigation styles */
     .top-nav {
       text-align: center;
-      margin-top: 2rem;
       z-index: 2;
       position: relative;
+      padding-top: 2rem;
     }
 
     .top-nav .logo-nav {
@@ -43,18 +70,17 @@
       color: #dfefff;
     }
 
+    /* Content styles */
     .content {
       position: relative;
       z-index: 1;
-      min-height: calc(100vh - 140px);
+      flex: 1; /* This makes it take up available space and push footer down */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      margin: 1rem auto 0 auto; /* closer to top */
-      padding: 1rem 1rem 4rem;
+      padding: 2rem 1rem 4rem;
       text-align: center;
-      margin-top: 1rem;
     }
 
     h1 {
@@ -70,6 +96,7 @@
 
     .post {
       margin-bottom: 3rem;
+      max-width: 700px;
     }
 
     .post h2 {
@@ -99,18 +126,51 @@
     .post h2 a:hover {
       text-decoration: underline;
     }
+
+    /* Footer styles */
+    .footer {
+      width: 100%;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-content {
+      width: 80%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
   </style>
 </head>
 <body>
+<div class="page-wrapper">
   <canvas id="bg"></canvas>
 
   <!-- Top Navigation -->
   <nav class="top-nav">
-    <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+    <a href="index.html">
+      <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+    </a>
     <ul>
-      <li><a href="index.html">Main</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="people.html">People</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="insights.html">Insights</a></li>
       <li><a href="services.html">Services</a></li>
@@ -123,23 +183,23 @@
     <div id="insights-posts"></div>
   </div>
 
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="copyright">
+        &copy; 2025 Strata Nova AS
+      </div>
+      <div class="contact">
+        <a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
   <script src="scripts/neuronAnimation.js"></script>
   <script>
     const postsContainer = document.getElementById("insights-posts");
 
-    const localPosts = [
-      {
-        title: "Curiosity Before Expertise",
-        body: "Strata Nova isn’t about finished ideas. It’s about sharing ideas as they take shape — before they’re polished, before they’re certain. That’s how we learn in public.",
-        date: "2024-12-15"
-      },
-      {
-        title: "Learning in the Open",
-        body: "Instead of waiting to become an expert, I’m exploring how neuroscience, computation, and human experience intersect — and documenting the process as it happens.",
-        date: "2024-12-20"
-      }
-    ];
-
+    // Just keeping the one real post
     const linkedInPosts = [
       {
         title: `<a href="https://www.linkedin.com/posts/henrikformoe_10-years-and-a-day-today-i-stood-in-front-activity-7303514521132810240-ZRnS?utm_source=share&utm_medium=member_desktop&rcm=ACoAABi_qQMBL-BUlZfFtRZAqu1rXMmeUOIDtgU" target="_blank" rel="noopener noreferrer">10 Years and a Day</a>`,
@@ -148,9 +208,7 @@
       }
     ];
 
-    const allPosts = [...localPosts, ...linkedInPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    allPosts.forEach(post => {
+    linkedInPosts.forEach(post => {
       const el = document.createElement("div");
       el.className = "post";
       const dateFormatted = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
