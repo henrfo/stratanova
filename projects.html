@@ -9,163 +9,292 @@
 <style>
 /* Basic structure styles */
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+background: #000;
+color: white;
+font-family: 'Inter', sans-serif;
+font-weight: 300;
 }
-
 /* Page wrapper for sticky footer */
 .page-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 }
-
 canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 0;
 }
-
 /* Navigation styles */
 .top-nav {
-  text-align: center;
-  z-index: 2;
-  position: relative;
-  padding-top: 2rem;
+text-align: center;
+z-index: 2;
+position: relative;
+padding-top: 2rem;
 }
-
 .top-nav .logo-nav {
-  width: 60px;
-  height: auto;
-  opacity: 0.85;
-  margin-bottom: 1rem;
+width: 60px;
+height: auto;
+opacity: 0.85;
+margin-bottom: 1rem;
 }
-
 .top-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 1rem auto;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+list-style: none;
+padding: 0;
+margin: 0 auto 1rem auto;
+display: flex;
+justify-content: center;
+gap: 2rem;
+flex-wrap: wrap;
 }
-
 .top-nav ul li a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 300;
-  transition: color 0.2s ease;
+color: #ffffff;
+text-decoration: none;
+font-size: 1rem;
+font-weight: 300;
+transition: color 0.2s ease;
 }
-
 .top-nav ul li a:hover {
-  color: #dfefff;
+color: #dfefff;
 }
-
 /* Content styles */
 .content {
-  position: relative;
-  z-index: 1;
-  flex: 1; /* This makes it take up available space and push footer down */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 2rem 1rem;
+position: relative;
+z-index: 1;
+flex: 1; /* This makes it take up available space and push footer down */
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+padding: 2rem 1rem;
 }
-
 h1 {
-  font-family: 'Exo 2', sans-serif;
-  text-transform: uppercase;
-  font-weight: 300;
-  font-size: 2.2rem;
-  color: #ffffff;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
+font-family: 'Exo 2', sans-serif;
+text-transform: uppercase;
+font-weight: 300;
+font-size: 2.2rem;
+color: #ffffff;
+letter-spacing: 1px;
+margin-bottom: 1rem;
 }
-
 .content p {
-  font-size: 1rem;
-  color: #ccc;
+font-size: 1rem;
+color: #ccc;
 }
-
 /* Footer styles */
 .footer {
-  width: 100%;
-  padding: 1.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  z-index: 1;
+width: 100%;
+padding: 1.5rem 0;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+position: relative;
+z-index: 1;
 }
-
 .footer-content {
-  width: 80%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
+width: 80%;
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: rgba(255, 255, 255, 0.7);
+font-size: 0.9rem;
 }
-
 .footer a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: color 0.2s ease;
+color: rgba(255, 255, 255, 0.7);
+text-decoration: none;
+transition: color 0.2s ease;
+}
+.footer a:hover {
+color: white;
 }
 
-.footer a:hover {
-  color: white;
+/* Project styles */
+.project-card {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    text-align: left;
+    backdrop-filter: blur(5px);
+}
+
+.project-card h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.project-card h3 {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #dfefff;
+}
+
+.project-summary {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #dfefff;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.approach ul, .project-impact ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.approach li, .project-impact li {
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+.cta-section {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* For mobile screens */
+@media (max-width: 600px) {
+    .project-stats {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .project-card {
+        padding: 1.5rem;
+    }
 }
 </style>
 </head>
 <body>
 <div class="page-wrapper">
-  <canvas id="bg"></canvas>
-  
-  <!-- Top Navigation -->
-  <nav class="top-nav">
-    <a href="index.html">
-      <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
-    </a>
-    <ul>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="people.html">People</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="insights.html">Insights</a></li>
-      <li><a href="services.html">Services</a></li>
-    </ul>
-  </nav>
-  
-  <!-- Projects Content -->
-  <div class="content">
-    <h1>Projects</h1>
-    <p>Coming soon</p>
-  </div>
-  
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="copyright">
-        &copy; 2025 Strata Nova AS
-      </div>
-      <div class="contact">
-        <a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
-      </div>
-    </div>
-  </footer>
-</div>
+<canvas id="bg"></canvas>
+<!-- Top Navigation -->
+<nav class="top-nav">
+<a href="index.html">
+<img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+</a>
+<ul>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="people.html">People</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="insights.html">Insights</a></li>
+<li><a href="services.html">Services</a></li>
+</ul>
+</nav>
+<!-- Projects Content -->
+<div class="content">
+<h1>Projects</h1>
 
+<div class="project-card">
+    <h2>Predicting Cognitive Training Gain After Stroke</h2>
+    
+    <div class="project-details">
+        <p class="project-summary">
+            A multimodal machine learning approach that predicts which stroke patients will benefit most from cognitive rehabilitation, combining structural MRI, inflammatory biomarkers, and advanced deviation metrics.
+        </p>
+        
+        <div class="project-stats">
+            <div class="stat">
+                <span class="stat-value">R² = 0.42-0.49</span>
+                <span class="stat-label">Predictive Performance</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">n = 54</span>
+                <span class="stat-label">Stroke Patients</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">n = 900</span>
+                <span class="stat-label">Healthy Controls</span>
+            </div>
+        </div>
+        
+        <div class="approach">
+            <h3>Our Approach</h3>
+            <p>We developed an XGBoost model that integrates multiple data types to predict cognitive training outcomes:</p>
+            <ul>
+                <li>Structural T1-weighted MRI features</li>
+                <li>Inflammatory blood markers</li>
+                <li>PCA-derived components (20 features)</li>
+                <li>Autoencoder-based deviation metrics (reconstruction error + Mahalanobis distance)</li>
+            </ul>
+        </div>
+        
+        <div class="project-impact">
+            <h3>Why It Matters</h3>
+            <p>By accurately predicting which patients will benefit most from cognitive training, this approach enables:</p>
+            <ul>
+                <li>Improved understanding of features important for recovery, which if validated on a larger sample, may contribute to more personalized rehabilitation strategies.</li>
+            </ul>
+        </div>
+        
+        <div class="cta-section">
+            <a href="mailto:henrik@stratanova.no" class="cta-button">Discuss this research</a>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="footer">
+<div class="footer-content">
+<div class="copyright">
+&copy; 2025 Strata Nova AS
+</div>
+<div class="contact">
+<a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+</div>
+</div>
+</footer>
+</div>
 <script src="scripts/neuronAnimation.js"></script>
 </body>
 </html>
