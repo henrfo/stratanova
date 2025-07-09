@@ -236,55 +236,48 @@ color: white;
 </nav>
 <!-- Projects Content -->
 <div class="content">
-<h1>Projects</h1>
-
-<div class="project-card">
-    <h2>Predicting Cognitive Training Gain After Stroke</h2>
-    
+    <h1>Projects</h1>
+    <div class="project-card">
+    <h2>Exploring Biomarkers of Cognitive Training Responsiveness After Stroke</h2>
     <div class="project-details">
-        <p class="project-summary">
-            A multimodal machine learning approach that predicts which stroke patients will benefit most from cognitive rehabilitation, combining structural MRI, inflammatory biomarkers, and advanced deviation metrics.
-        </p>
-        
-        <div class="project-stats">
-            <div class="stat">
-                <span class="stat-value">R² = 0.42-0.49</span>
-                <span class="stat-label">Predictive Performance</span>
-            </div>
-            <div class="stat">
-                <span class="stat-value">n = 54</span>
-                <span class="stat-label">Stroke Patients</span>
-            </div>
-            <div class="stat">
-                <span class="stat-value">n = 900</span>
-                <span class="stat-label">Healthy Controls</span>
-            </div>
-        </div>
-        
-        <div class="approach">
-            <h3>Our Approach</h3>
-            <p>We developed an XGBoost model that integrates multiple data types to predict cognitive training outcomes:</p>
-            <ul>
-                <li>Structural T1-weighted MRI features</li>
-                <li>Inflammatory blood markers</li>
-                <li>20 PCA-derived components (from approximately 1200 T1 MRI features)</li>
-                <li>20 autoencoder-based brain deviation metrics (plus reconstruction error + Mahalanobis distance)</li>
-            </ul>
-        </div>
-        
-        <div class="project-impact">
-            <h3>Why It Matters</h3>
-            <p>By accurately predicting which patients will benefit most from cognitive training, this approach improves understanding of features that are important for post-stroke recovery, which if validated on a larger sample, may contribute to more personalized rehabilitation strategies
-
-            </p>
-        </div>
-        
-        <div class="cta-section">
-            <a href="mailto:henrik@stratanova.no" class="cta-button">Discuss this research</a>
-        </div>
+    <p class="project-summary">
+     An exploratory multimodal machine learning approach examining potential relationships between brain features and cognitive training outcomes in stroke patients, integrating structural MRI, blood biomarkers, and normative deviation metrics.
+    </p>
+    <div class="project-stats">
+    <div class="stat">
+    <span class="stat-value">R² = 0.22 (bootstrap)</span>
+    <span class="stat-label">In-sample Performance</span>
     </div>
-</div>
-</div>
+    <div class="stat">
+    <span class="stat-value">n = 54</span>
+    <span class="stat-label">Stroke Patients</span>
+    </div>
+    <div class="stat">
+    <span class="stat-value">n = 951</span>
+    <span class="stat-label">Healthy Controls</span>
+    </div>
+    </div>
+    <div class="approach">
+    <h3>Our Approach</h3>
+    <p>We conducted an exploratory in-sample analysis using XGBoost to identify potential biological correlates:</p>
+    <ul>
+    <li>Structural T1-weighted MRI features</li>
+    <li>Blood biomarkers</li>
+    <li>Structural covariance patterns (PCA-derived)</li>
+    <li>Autoencoder-derived normative deviation metrics comparing stroke patients to healthy brain structure</li>
+    </ul>
+    </div>
+    <div class="project-impact">
+    <h3>Research Implications</h3>
+    <p>This hypothesis-generating study identified biologically plausible relationships between distributed neural systems and cognitive training responsiveness. The findings suggest potential directions for future research with larger samples that could eventually inform more personalized rehabilitation approaches.
+    </p>
+    </div>
+    <div class="cta-section">
+    <a href="mailto:henrik@stratanova.no" class="cta-button">Discuss this research</a>
+    </div>
+    </div>
+    </div>
+    </div>
 <footer class="footer">
 <div class="footer-content">
 <div class="copyright">
