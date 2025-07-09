@@ -7,212 +7,186 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/main.css">
 <style>
-/* Basic structure styles */
-html, body {
-margin: 0;
-padding: 0;
-width: 100%;
-height: 100%;
-background: #000;
-color: white;
-font-family: 'Inter', sans-serif;
-font-weight: 300;
-}
-/* Page wrapper for sticky footer */
-.page-wrapper {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-}
-canvas {
-position: fixed;
-top: 0;
-left: 0;
-z-index: 0;
-}
-/* Navigation styles */
-.top-nav {
-text-align: center;
-z-index: 2;
-position: relative;
-padding-top: 2rem;
-}
-.top-nav .logo-nav {
-width: 60px;
-height: auto;
-opacity: 0.85;
-margin-bottom: 1rem;
-}
-.top-nav ul {
-list-style: none;
-padding: 0;
-margin: 0 auto 1rem auto;
-display: flex;
-justify-content: center;
-gap: 2rem;
-flex-wrap: wrap;
-}
-.top-nav ul li a {
-color: #ffffff;
-text-decoration: none;
-font-size: 1rem;
-font-weight: 300;
-transition: color 0.2s ease;
-}
-.top-nav ul li a:hover {
-color: #dfefff;
-}
-/* Content styles */
-.content {
-position: relative;
-z-index: 1;
-flex: 1; /* This makes it take up available space and push footer down */
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-text-align: center;
-padding: 2rem 1rem;
-}
-h1 {
-font-family: 'Exo 2', sans-serif;
-text-transform: uppercase;
-font-weight: 300;
-font-size: 2.2rem;
-color: #ffffff;
-letter-spacing: 1px;
-margin-bottom: 1rem;
-}
-.content p {
-font-size: 1rem;
-color: #ccc;
-}
-/* Footer styles */
-.footer {
-width: 100%;
-padding: 1.5rem 0;
-border-top: 1px solid rgba(255, 255, 255, 0.1);
-position: relative;
-z-index: 1;
-}
-.footer-content {
-width: 80%;
-max-width: 1200px;
-margin: 0 auto;
-display: flex;
-justify-content: space-between;
-align-items: center;
-color: rgba(255, 255, 255, 0.7);
-font-size: 0.9rem;
-}
-.footer a {
-color: rgba(255, 255, 255, 0.7);
-text-decoration: none;
-transition: color 0.2s ease;
-}
-.footer a:hover {
-color: white;
+/* Project grid layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Project styles */
+/* Project card styles */
 .project-card {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    max-width: 800px;
-    text-align: left;
-    backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+  cursor: pointer;
 }
 
-.project-card h2 {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 1.6rem;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    color: white;
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.project-card h3 {
-    font-size: 1.1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: #dfefff;
+/* Project thumbnail */
+.project-thumbnail {
+  width: 100%;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(20, 30, 60, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.thumbnail-icon {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.project-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.status-ongoing {
+  background-color: rgba(25, 118, 210, 0.8);
+}
+
+.status-completed {
+  background-color: rgba(46, 125, 50, 0.8);
+}
+
+.status-planned {
+  background-color: rgba(237, 108, 2, 0.8);
+}
+
+/* Project content */
+.project-header {
+  padding: 1rem 1.5rem;
+}
+
+.project-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin: 0;
+  color: white;
+}
+
+/* Project tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Expandable content */
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  padding: 0 1.5rem;
+}
+
+.project-card.expanded .expandable-content {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .project-summary {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 1.5rem;
 }
 
+/* Project stats */
 .project-stats {
-    display: flex;
-    justify-content: space-between;
-    margin: 1.5rem 0;
-    flex-wrap: wrap;
-    gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  justify-content: space-between;
 }
 
 .stat {
-    display: flex;
-    flex-direction: column;
-    min-width: 120px;
+  min-width: 100px;
 }
 
 .stat-value {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #dfefff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #dfefff;
+  display: block;
 }
 
 .stat-label {
-    font-size: 0.9rem;
-    color: #aaa;
+  font-size: 0.8rem;
+  color: #aaa;
 }
 
-.approach ul, .project-impact ul {
-    padding-left: 1.5rem;
-    margin-top: 0.5rem;
+/* Expand indicator */
+.expand-indicator {
+  text-align: center;
+  padding: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
 }
 
-.approach li, .project-impact li {
-    margin-bottom: 0.5rem;
-    color: #ccc;
+.project-card.expanded .expand-indicator {
+  border-top: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.cta-section {
-    margin-top: 2rem;
-    text-align: center;
+.expand-indicator:before {
+  content: "Expand details ↓";
 }
 
-.cta-button {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.project-card.expanded .expand-indicator:before {
+  content: "Collapse ↑";
 }
 
-.cta-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
 }
 
-/* For mobile screens */
-@media (max-width: 600px) {
-    .project-stats {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    
-    .project-card {
-        padding: 1.5rem;
-    }
+/* Adding a style for the content class to accommodate the grid */
+.content {
+  max-width: 1200px !important;
+  width: 100%;
 }
 </style>
 </head>
@@ -236,48 +210,159 @@ color: white;
 </nav>
 <!-- Projects Content -->
 <div class="content">
-    <h1>Projects</h1>
+  <h1>Projects</h1>
+  
+  <div class="projects-grid">
+    <!-- Project 1 -->
     <div class="project-card">
-    <h2>Exploring Biomarkers of Cognitive Training Responsiveness After Stroke</h2>
-    <div class="project-details">
-    <p class="project-summary">
-     Bachelor Thesis: An exploratory multimodal machine learning approach examining potential relationships between brain features and cognitive training outcomes in stroke patients, integrating structural MRI, blood biomarkers, and normative deviation metrics.
-    </p>
-    <div class="project-stats">
-    <div class="stat">
-    <span class="stat-value">R² = 0.22 (bootstrap)</span>
-    <span class="stat-label">In-sample Performance</span>
+      <div class="project-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1559757175-5700dde675bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+        <span class="project-status status-completed">Completed</span>
+      </div>
+      <div class="project-header">
+        <h2 class="project-title">Bachelor Thesis: Exploring Biomarkers of Cognitive Training Responsiveness After Stroke</h2>
+        <div class="project-tags">
+          <span class="tag">Neuroscience</span>
+          <span class="tag">Stroke</span>
+          <span class="tag">Machine Learning</span>
+        </div>
+      </div>
+      <div class="expand-indicator"></div>
+      <div class="expandable-content">
+        <p class="project-summary">
+          An exploratory multimodal machine learning approach examining potential relationships between brain features and cognitive training outcomes in stroke patients, integrating structural MRI, blood biomarkers, and normative deviation metrics.
+        </p>
+        <div class="project-stats">
+          <div class="stat">
+            <span class="stat-value">R² = 0.22</span>
+            <span class="stat-label">In-sample Performance</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">n = 54</span>
+            <span class="stat-label">Stroke Patients</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">n = 951</span>
+            <span class="stat-label">Healthy Controls</span>
+          </div>
+        </div>
+        <a href="projects/biomarkers-cognitive-training.html" class="cta-button">View full project</a>
+      </div>
     </div>
-    <div class="stat">
-    <span class="stat-value">n = 54</span>
-    <span class="stat-label">Stroke Patients</span>
+    
+    <!-- Project 2 -->
+<div class="project-card">
+    <div class="project-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/Hippocampus.jpg')">
+      <span class="project-status status-ongoing">Ongoing</span>
     </div>
-    <div class="stat">
-    <span class="stat-value">n = 951</span>
-    <span class="stat-label">Healthy Controls</span>
+    <div class="project-header">
+      <h2 class="project-title">Exploring Neural Models of Hippocampal Memory</h2>
+      <div class="project-tags">
+        <span class="tag">Computational Neuroscience</span>
+        <span class="tag">Memory Systems</span>
+        <span class="tag">Neural Networks</span>
+      </div>
     </div>
+    <div class="expand-indicator"></div>
+    <div class="expandable-content">
+      <p class="project-summary">
+        Project at Simula Summer School in Computational Physiology (SSCP) investigating how artificial neural networks can model hippocampal memory functions. Implementing and experimenting with Hopfield Networks and Kanerva Machines to simulate pattern completion, pattern separation, and associative memory processes that underlie spatial and episodic memory formation.
+      </p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-value">SSCP</span>
+          <span class="stat-label">Summer School</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">2025</span>
+          <span class="stat-label">Project Year</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">Simula</span>
+          <span class="stat-label">Research Lab</span>
+        </div>
+      </div>
+      <a href="projects/hippocampal-memory-models.html" class="cta-button">View full project</a>
     </div>
-    <div class="approach">
-    <h3>Our Approach</h3>
-    <p>We conducted an exploratory in-sample analysis using XGBoost and SHAP to identify potential biological correlates:</p>
-    <ul>
-    <li>Structural T1-weighted MRI features</li>
-    <li>Blood biomarkers</li>
-    <li>Structural covariance patterns (PCA-derived)</li>
-    <li>Autoencoder-derived normative deviation metrics comparing stroke patients to healthy brain structure</li>
-    </ul>
+  </div>
+
+<!-- Project 3 -->
+<div class="project-card">
+    <div class="project-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1559757175-5700dde675bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+      <span class="project-status status-ongoing">Ongoing</span>
     </div>
-    <div class="project-impact">
-    <h3>Research Implications</h3>
-    <p>This hypothesis-generating study identified biologically plausible relationships between distributed neural systems and cognitive training responsiveness. The findings suggest potential directions for future research with larger samples that could eventually inform more personalized rehabilitation approaches.
-    </p>
+    <div class="project-header">
+      <h2 class="project-title">Hippocampal Circuit Dynamics in SEEG Data</h2>
+      <div class="project-tags">
+        <span class="tag">Electrophysiology</span>
+        <span class="tag">Neural Oscillations</span>
+        <span class="tag">Memory Circuits</span>
+      </div>
     </div>
-    <div class="cta-section">
-    <a href="mailto:henrik@stratanova.no" class="cta-button">Discuss this research</a>
+    <div class="expand-indicator"></div>
+    <div class="expandable-content">
+      <p class="project-summary">
+        UiO:Life Science summer research project analyzing stereoelectroencephalography (SEEG) data to investigate hippocampal memory circuits and their input regions. Focusing on theta oscillations across the hippocampus and its primary input regions (entorhinal cortex and perirhinal cortex) during novel image processing, this project develops automated pipelines to extract, filter, and analyze neural activity patterns in the medial temporal lobe memory system.
+      </p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-value">UiO</span>
+          <span class="stat-label">Life Science</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">HPC+</span>
+          <span class="stat-label">Memory Circuit</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">θ</span>
+          <span class="stat-label">Oscillations</span>
+        </div>
+      </div>
+      <a href="projects/seeg-analysis.html" class="cta-button">View full project</a>
     </div>
+  </div>
+    
+<!-- Project 4 -->
+<div class="project-card">
+    <div class="project-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+      <span class="project-status status-planned">Planned</span>
     </div>
+    <div class="project-header">
+      <h2 class="project-title"> Master Thesis: NeuroSHAP</h2>
+      <div class="project-tags">
+        <span class="tag">Interpretability</span>
+        <span class="tag">Neuroimaging</span>
+        <span class="tag">SHAP</span>
+      </div>
     </div>
+    <div class="expand-indicator"></div>
+    <div class="expandable-content">
+      <p class="project-summary">
+        Enhancing Kernel SHAP interpretability for neuroimaging by addressing feature independence assumptions through domain-specific constraints. Using Markov Random Fields with a graph-theoretical approach to incorporate spatial and connectivity awareness for more biologically plausible explanations.
+      </p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-value">2D/3D</span>
+          <span class="stat-label">Spatial Awareness</span>
+        </div>
+        </div>
+        <div class="stat">
+        <span class="stat-value">2025</span>
+        <span class="stat-label">Project Year</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">MRF</span>
+          <span class="stat-label">Bayesian Framework</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">ROI</span>
+          <span class="stat-label">Atlas Integration</span>
+        </div>
+      </div>
+      <a href="projects/neuroshap.html" class="cta-button">View full project</a>
     </div>
+  </div>
+
+</div>
 <footer class="footer">
 <div class="footer-content">
 <div class="copyright">
@@ -293,6 +378,7 @@ color: white;
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.top-nav ul');
     
@@ -301,7 +387,6 @@ color: white;
         e.preventDefault();
         navMenu.classList.toggle('active');
         menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-        console.log('Menu toggled');
       });
       
       // Close menu when clicking outside
@@ -312,8 +397,32 @@ color: white;
         }
       });
     }
+
+    // Project card expansion
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        // Don't toggle if clicking on the "View full project" link
+        if (e.target.classList.contains('cta-button')) {
+          return;
+        }
+        
+        // Toggle the expanded class
+        this.classList.toggle('expanded');
+        
+        // If we're expanding this card, collapse others
+        if (this.classList.contains('expanded')) {
+          projectCards.forEach(otherCard => {
+            if (otherCard !== this) {
+              otherCard.classList.remove('expanded');
+            }
+          });
+        }
+      });
+    });
   });
-  </script>
+</script>
 
 </body>
 </html>

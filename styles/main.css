@@ -189,6 +189,24 @@
     color: #ccc;
     text-decoration: underline;
   }
+
+  /* ==========================================================================
+   Projects Grid Styles
+   ========================================================================== */
+.projects-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Maintain your existing project-card styles */
+.project-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
   
   /* ==========================================================================
      Navigation styles (for non-fixed navigation)
