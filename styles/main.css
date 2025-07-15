@@ -190,23 +190,35 @@
     text-decoration: underline;
   }
 
-  /* ==========================================================================
+/* ==========================================================================
    Projects Grid Styles
    ========================================================================== */
-.projects-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  width: 100%;
-  margin-bottom: 2rem;
-}
-
-/* Maintain your existing project-card styles */
-.project-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
+   .projects-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  /* Maintain your existing project-card styles */
+  .project-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Adjust for larger screens - optional */
+  @media (min-width: 1200px) {
+    .projects-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+    
+    .content {
+      max-width: 1200px; /* Only when viewing projects page */
+    }
+  }
   
   /* ==========================================================================
      Navigation styles (for non-fixed navigation)
