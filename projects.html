@@ -240,82 +240,11 @@ canvas {
   <h1>Projects</h1>
   
   <div class="projects-grid">
-    <!-- Project 1 -->
-    <a href="projects/biomarkers-cognitive-training.html" class="project-card">
-      <div class="project-thumbnail">
-        <span class="project-status status-completed">Completed</span>
-      </div>
-      <div class="project-content">
-        <h2 class="project-title">Bachelor Thesis: Exploring Biomarkers of Cognitive Training Responsiveness After Stroke</h2>
-        <p class="project-pitch">
-          A multimodal ML approach examining relationships between brain features and cognitive training outcomes in stroke patients. Integrated structural MRI, blood biomarkers, and normative deviations to identify predictive patterns.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Neuroscience</span>
-          <span class="tag">Stroke</span>
-          <span class="tag">Machine Learning</span>
-        </div>
-        <span class="view-more">View full project</span>
-      </div>
-    </a>
-    
-    <!-- Project 2 -->
-    <a href="projects/hippocampal-memory-models.html" class="project-card">
-      <div class="project-thumbnail">
-        <span class="project-status status-ongoing">Ongoing</span>
-      </div>
-      <div class="project-content">
-        <h2 class="project-title">Exploring Neural Models of Hippocampal Memory</h2>
-        <p class="project-pitch">
-          Simula Summer School project implementing Hopfield Networks and Kanerva Machines to model hippocampal memory functions, including pattern completion and separation mechanisms underlying spatial and episodic memory.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Computational Neuroscience</span>
-          <span class="tag">Memory Systems</span>
-          <span class="tag">Neural Networks</span>
-        </div>
-        <span class="view-more">View full project</span>
-      </div>
-    </a>
-
-    <!-- Project 3 -->
-    <a href="projects/seeg-analysis.html" class="project-card">
-      <div class="project-thumbnail">
-        <span class="project-status status-ongoing">Ongoing</span>
-      </div>
-      <div class="project-content">
-        <h2 class="project-title">Hippocampal Circuit Dynamics in SEEG Data</h2>
-        <p class="project-pitch">
-          UiO:Life Science project analyzing intracranial recordings to investigate theta oscillations in hippocampal-cortical circuits during memory processing. Building automated pipelines for neural signal analysis.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Electrophysiology</span>
-          <span class="tag">Neural Oscillations</span>
-          <span class="tag">Memory Circuits</span>
-        </div>
-        <span class="view-more">View full project</span>
-      </div>
-    </a>
-    
-    <!-- Project 4 -->
-    <a href="projects/neuroshap.html" class="project-card">
-      <div class="project-thumbnail">
-        <span class="project-status status-planned">Planned</span>
-      </div>
-      <div class="project-content">
-        <h2 class="project-title">Master Thesis: NeuroSHAP</h2>
-        <p class="project-pitch">
-          Enhancing SHAP interpretability for neuroimaging through spatial constraints and Markov Random Fields. Developing biologically-informed explanations that respect brain connectivity and regional dependencies.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Interpretability</span>
-          <span class="tag">Neuroimaging</span>
-          <span class="tag">SHAP</span>
-        </div>
-        <span class="view-more">View full project</span>
-      </div>
-    </a>
-
+    <!-- Projects are automatically loaded by projectLoader.js -->
+    <!-- To add a new project: -->
+    <!-- 1. Create a new HTML file in /projects/ following the template -->
+    <!-- 2. Add project config to projectLoader.js -->
+    <!-- 3. Cards will auto-generate on page load -->
   </div>
 </div>
 
@@ -332,31 +261,9 @@ canvas {
 </div>
 
 <script src="scripts/neuronAnimation.js"></script>
-<script src="scripts/projectImageSync.js"></script>
+<script src="scripts/projectLoader.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Sort projects by status: Planned → Ongoing → Completed
-    const projectsGrid = document.querySelector('.projects-grid');
-    const projectCards = Array.from(projectsGrid.children);
-    
-    // Define sort order
-    const statusOrder = {
-      'planned': 1,
-      'ongoing': 2,
-      'completed': 3
-    };
-    
-    // Sort project cards
-    projectCards.sort((a, b) => {
-      const statusA = a.querySelector('.project-status').className.split(' ').find(cls => cls.startsWith('status-')).replace('status-', '');
-      const statusB = b.querySelector('.project-status').className.split(' ').find(cls => cls.startsWith('status-')).replace('status-', '');
-      
-      return statusOrder[statusA] - statusOrder[statusB];
-    });
-    
-    // Reorder in DOM
-    projectCards.forEach(card => projectsGrid.appendChild(card));
-    
     // Mobile menu toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.top-nav ul');
