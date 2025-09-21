@@ -15,7 +15,7 @@ class ServiceLoader {
 
   async loadServiceData(filename) {
     try {
-      const response = await fetch(`scripts/services/${filename}`);
+      const response = await fetch(`services/${filename}`);
       if (!response.ok) return null;
       
       const html = await response.text();
