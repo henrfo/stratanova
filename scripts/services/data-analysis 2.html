@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analysis & Insights | Strata Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+/* Service-specific styles */
+.service-hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8));
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  margin-top: 80px;
+}
+
+.service-hero h1 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+  max-width: 900px;
+}
+
+.service-hero .service-icon-hero {
+  font-size: 4rem;
+  color: #a9c8e6;
+  margin-bottom: 1.5rem;
+}
+
+.service-tagline {
+  font-size: 1.2rem;
+  color: #dfefff;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.service-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.service-section {
+  margin-bottom: 3rem;
+}
+
+.service-section h2 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: #dfefff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.service-section h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 2rem 0 1rem 0;
+  color: #a9c8e6;
+}
+
+.service-section p {
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.service-section ul, .service-section ol {
+  color: #ccc;
+  line-height: 1.8;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-section li {
+  margin-bottom: 0.5rem;
+}
+
+/* Back button */
+.back-button {
+  display: inline-block;
+  color: #dfefff;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease;
+}
+
+.back-button:hover {
+  color: white;
+}
+
+/* Features grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  background: rgba(20, 40, 80, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.feature-card i {
+  font-size: 2rem;
+  color: #a9c8e6;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 0;
+}
+
+/* Process steps */
+.process-steps {
+  counter-reset: step-counter;
+  margin: 2rem 0;
+}
+
+.process-step {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 2rem;
+  counter-increment: step-counter;
+}
+
+.process-step::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(169, 200, 230, 0.2);
+  border: 1px solid #a9c8e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #a9c8e6;
+}
+
+/* CTA section */
+.cta-section {
+  background: rgba(20, 40, 80, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.cta-button {
+  display: inline-block;
+  background: rgba(169, 200, 230, 0.2);
+  color: #ffffff;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid #a9c8e6;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background: rgba(169, 200, 230, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .service-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+<canvas id="bg"></canvas>
+
+<!-- Top Navigation -->
+<nav class="top-nav">
+<a href="../index.html">
+<img src="../assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+</a>
+<button class="mobile-menu-toggle">☰</button>
+<ul>
+<li><a href="../contact.html">Contact</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../people.html">People</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../insights.html">Insights</a></li>
+<li><a href="../services.html">Services</a></li>
+</ul>
+</nav>
+
+<!-- Service Hero -->
+<div class="service-hero">
+  <i class="fas fa-chart-line service-icon-hero"></i>
+  <h1>Data Analysis</h1>
+  <p class="service-tagline">Statistical analysis and data visualization across research domains</p>
+</div>
+
+<!-- Service Content -->
+<div class="service-content">
+  
+  <!-- Back button -->
+  <a href="../services.html" class="back-button">← Back to Services</a>
+
+  <!-- Overview Section -->
+  <section class="service-section">
+    <h2>Overview</h2>
+    <p>
+      Quality data analysis requires both technical skills and domain understanding. I provide statistical analysis and visualization services across various research fields, bringing current methodological knowledge and practical experience to your projects.
+    </p>
+    <p>
+      From exploratory data analysis to publication-ready figures, I focus on transparent, reproducible approaches that help you understand your data and communicate findings effectively.
+    </p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="service-section">
+    <h2>Analysis Areas</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-brain"></i>
+        <h3>Neuroimaging</h3>
+        <p>fMRI, structural MRI, and EEG analysis using FSL, SPM, and Python</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-dna"></i>
+        <h3>Biomedical Research</h3>
+        <p>Clinical trials, biomarker studies, and experimental data analysis</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-flask"></i>
+        <h3>General Research</h3>
+        <p>Survey data, behavioral studies, and mixed-methods research</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="service-section">
+    <h2>Approach</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <h3>Data Assessment</h3>
+        <p>Review your data structure, quality, and research questions to plan the optimal analysis strategy.</p>
+      </div>
+      <div class="process-step">
+        <h3>Analysis & Documentation</h3>
+        <p>Perform analyses with well-documented, reproducible code and clear progress communication.</p>
+      </div>
+      <div class="process-step">
+        <h3>Results & Visualization</h3>
+        <p>Deliver clear findings with publication-ready figures and comprehensive documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="service-section">
+    <h2>Typical Projects</h2>
+    <ul>
+      <li>Neuroimaging preprocessing and statistical analysis</li>
+      <li>Experimental data analysis for manuscripts</li>
+      <li>Power calculations and sample size planning</li>
+      <li>Data cleaning and quality control pipelines</li>
+      <li>Custom visualization for papers and presentations</li>
+      <li>Reproducibility audits and code review</li>
+    </ul>
+  </section>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h2>Need Analysis Support?</h2>
+    <p>Let's discuss how I can help with your data analysis project.</p>
+    <a href="mailto:contact@stratanova.no" class="cta-button">Get in Touch</a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="copyright">
+      &copy; 2025 Strata Nova AS
+    </div>
+    <div class="contact">
+      <a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script src="../scripts/neuronAnimation.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.top-nav ul');
+    
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
