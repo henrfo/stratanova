@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exploring Neural Models of Hippocampal Memory | Strata Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="../styles/project-template.css">
+</head>
+<body>
+<div class="page-wrapper">
+<canvas id="bg"></canvas>
+
+<!-- Top Navigation -->
+<nav class="top-nav">
+<a href="../index.html">
+<img src="../assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+</a>
+<button class="mobile-menu-toggle">☰</button>
+<ul>
+<li><a href="../contact.html">Contact</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../people.html">People</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../insights.html">Insights</a></li>
+<li><a href="../services.html">Services</a></li>
+</ul>
+</nav>
+
+<!-- Project Hero -->
+<div class="project-hero">
+  <h1>Exploring Neural Models of Hippocampal Memory</h1>
+  <div class="project-meta">
+    <div class="meta-item">
+      <span class="meta-label">Status</span>
+      <span class="meta-value">Ongoing</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Type</span>
+      <span class="meta-value">Summer School Project</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Year</span>
+      <span class="meta-value">2025</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Institution</span>
+      <span class="meta-value">Simula Research Laboratory</span>
+    </div>
+  </div>
+</div>
+
+<!-- Project Content -->
+<div class="project-content">
+  
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+  <!-- Tags -->
+  <div class="project-tags">
+    <span class="tag">Computational Neuroscience</span>
+    <span class="tag">Memory Systems</span>
+    <span class="tag">Neural Networks</span>
+    <span class="tag">Hippocampus</span>
+    <span class="tag">Pattern Recognition</span>
+  </div>
+
+  <!-- Overview Section -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <p>
+      This project, undertaken at the Simula Summer School in Computational Physiology (SSCP), explores how artificial neural networks can model the complex memory functions of the hippocampus. The hippocampus is critical for forming new memories and spatial navigation, and understanding its computational principles has profound implications for both neuroscience and artificial intelligence.
+    </p>
+    <p>
+      By implementing and experimenting with classical models like Hopfield Networks and Kanerva Machines, this project investigates the fundamental mechanisms of associative memory, pattern completion, and pattern separation that enable the brain to store and retrieve memories efficiently despite noise and incomplete information.
+    </p>
+  </section>
+
+  <!-- Key Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-value">SSCP 2025</span>
+      <span class="stat-label">Summer School</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">2</span>
+      <span class="stat-label">Neural Models</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">4 weeks</span>
+      <span class="stat-label">Duration</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">Python</span>
+      <span class="stat-label">Primary Language</span>
+    </div>
+  </div>
+
+  <!-- Methods Section -->
+  <section class="project-section">
+    <h2>Methods & Approach</h2>
+    
+    <h3>Hopfield Networks</h3>
+    <p>
+      Implementing recurrent neural networks that model associative memory through energy minimization. These networks demonstrate how the hippocampus might store memories as attractor states, enabling robust pattern completion from partial or noisy inputs.
+    </p>
+    <ul>
+      <li><strong>Energy landscape:</strong> Modeling memory storage as energy minima in a high-dimensional space</li>
+      <li><strong>Hebbian learning:</strong> Implementing biologically plausible learning rules based on "neurons that fire together, wire together"</li>
+      <li><strong>Capacity analysis:</strong> Investigating storage limits and catastrophic interference</li>
+    </ul>
+
+    <h3>Kanerva Machines (Sparse Distributed Memory)</h3>
+    <p>
+      Exploring sparse distributed representations that mirror how the hippocampus might encode memories across populations of neurons. This approach offers insights into how the brain achieves massive storage capacity while maintaining rapid retrieval.
+    </p>
+    <ul>
+      <li><strong>Sparse coding:</strong> Implementing distributed representations with minimal neural activation</li>
+      <li><strong>Address decoding:</strong> Modeling how partial cues can retrieve complete memories</li>
+      <li><strong>Generalization:</strong> Understanding how similar patterns can be stored without interference</li>
+    </ul>
+  </section>
+
+  <!-- Key Investigations -->
+  <div class="key-findings">
+    <h3>Key Investigations</h3>
+    <ul>
+      <li><strong>Pattern Completion:</strong> How networks reconstruct complete memories from partial inputs, crucial for memory recall</li>
+      <li><strong>Pattern Separation:</strong> Mechanisms for distinguishing similar memories, preventing confusion between related experiences</li>
+      <li><strong>Capacity Limits:</strong> Understanding theoretical and practical bounds on memory storage</li>
+      <li><strong>Noise Tolerance:</strong> Evaluating robustness to input corruption and neural variability</li>
+      <li><strong>Temporal Dynamics:</strong> Investigating how memories evolve during storage and retrieval</li>
+    </ul>
+  </div>
+
+  <!-- Technical Details -->
+  <section class="project-section">
+    <h2>Technical Implementation</h2>
+    
+    <h3>Development Stack</h3>
+    <ul>
+      <li><strong>Python:</strong> Core implementation language for neural network models</li>
+      <li><strong>NumPy:</strong> Efficient matrix operations for network computations</li>
+      <li><strong>Matplotlib/Seaborn:</strong> Visualization of network dynamics and memory landscapes</li>
+      <li><strong>Jupyter Notebooks:</strong> Interactive development and experimentation</li>
+      <li><strong>NetworkX:</strong> Graph analysis of connectivity patterns</li>
+    </ul>
+
+    <h3>Experimental Design</h3>
+    <p>
+      The project employs systematic experiments to characterize network behavior:
+    </p>
+    <ul>
+      <li><strong>Benchmark tasks:</strong> Standard pattern recognition and recall tests</li>
+      <li><strong>Parametric studies:</strong> Varying network size, sparsity, and learning rates</li>
+      <li><strong>Comparative analysis:</strong> Contrasting different models' strengths and limitations</li>
+      <li><strong>Biological validation:</strong> Comparing model behavior with known hippocampal properties</li>
+    </ul>
+  </section>
+
+  <!-- Biological Relevance -->
+  <section class="project-section">
+    <h2>Biological Relevance</h2>
+    <p>
+      This work bridges computational theory and neurobiology by implementing models that capture key features of hippocampal processing:
+    </p>
+    
+    <h3>Hippocampal Circuits</h3>
+    <ul>
+      <li><strong>CA3 region:</strong> Modeled as an autoassociative network for pattern completion</li>
+      <li><strong>Dentate Gyrus:</strong> Represented through sparse coding for pattern separation</li>
+      <li><strong>CA1 region:</strong> Output layer for memory retrieval and consolidation</li>
+    </ul>
+
+    <h3>Clinical Applications</h3>
+    <p>
+      Understanding these computational principles has implications for:
+    </p>
+    <ul>
+      <li>Alzheimer's disease and memory disorders</li>
+      <li>Development of memory prosthetics</li>
+      <li>Cognitive rehabilitation strategies</li>
+      <li>Brain-inspired AI systems</li>
+    </ul>
+  </section>
+
+  <!-- Future Directions -->
+  <section class="project-section">
+    <h2>Future Directions</h2>
+    <p>
+      This foundational work opens several avenues for future research:
+    </p>
+    <ul>
+      <li><strong>Temporal sequences:</strong> Extending models to handle episodic memory and temporal patterns</li>
+      <li><strong>Spatial navigation:</strong> Incorporating place cells and grid cells for spatial memory</li>
+      <li><strong>Multi-modal integration:</strong> Combining different sensory inputs in memory formation</li>
+      <li><strong>Plasticity mechanisms:</strong> Implementing more sophisticated learning rules</li>
+      <li><strong>Large-scale simulations:</strong> Scaling to biologically realistic network sizes</li>
+    </ul>
+  </section>
+
+  <!-- Acknowledgments -->
+  <section class="project-section">
+    <h2>Acknowledgments</h2>
+    <p>
+      This project is part of the Simula Summer School in Computational Physiology (SSCP), an intensive program bringing together students from around the world to explore computational approaches to understanding physiological systems. Special thanks to the instructors and fellow participants for their insights and collaboration.
+    </p>
+  </section>
+
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+</div>
+
+<footer class="footer">
+<div class="footer-content">
+<div class="copyright">
+&copy; 2025 Strata Nova AS
+</div>
+<div class="contact">
+<a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+</div>
+</div>
+</footer>
+</div>
+
+<script src="../scripts/neuronAnimation.js"></script>
+<script src="../scripts/projectImageSync.js"></script>
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navMenu = document.querySelector('.top-nav ul');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      navMenu.classList.toggle('active');
+      menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        menuToggle.textContent = '☰';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

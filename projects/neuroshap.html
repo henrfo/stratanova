@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Thesis: NeuroSHAP | Strata Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="../styles/project-template.css">
+<style>
+/* Project-specific styles */
+.project-hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+              url('https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-hero h1 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+  max-width: 900px;
+}
+
+.project-meta {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meta-label {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-value {
+  font-size: 1.1rem;
+  color: #dfefff;
+  margin-top: 0.3rem;
+}
+
+.project-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.project-section h2 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: #dfefff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.project-section h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #dfefff;
+}
+
+.project-section p, .project-section ul {
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.project-section ul {
+  padding-left: 2rem;
+}
+
+.project-section li {
+  margin-bottom: 0.5rem;
+}
+
+/* Key findings box */
+.key-findings {
+  background: rgba(20, 40, 80, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.key-findings h3 {
+  margin-top: 0;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #dfefff;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Back button */
+.back-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  margin: 3rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #dfefff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tag {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mathematical notation */
+.math-notation {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #dfefff;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #dfefff;
+}
+
+/* Problem statement box */
+.problem-statement {
+  background: rgba(237, 108, 2, 0.1);
+  border: 1px solid rgba(237, 108, 2, 0.3);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.problem-statement h3 {
+  margin-top: 0;
+  color: rgba(237, 108, 2, 0.9);
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+<canvas id="bg"></canvas>
+
+<!-- Top Navigation -->
+<nav class="top-nav">
+<a href="../index.html">
+<img src="../assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+</a>
+<button class="mobile-menu-toggle">☰</button>
+<ul>
+<li><a href="../contact.html">Contact</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../people.html">People</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../insights.html">Insights</a></li>
+<li><a href="../services.html">Services</a></li>
+</ul>
+</nav>
+
+<!-- Project Hero -->
+<div class="project-hero">
+  <h1>Master Thesis: NeuroSHAP</h1>
+  <div class="project-meta">
+    <div class="meta-item">
+      <span class="meta-label">Status</span>
+      <span class="meta-value">Planned</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Type</span>
+      <span class="meta-value">Master Thesis</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Year</span>
+      <span class="meta-value">2025-2026</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Institution</span>
+      <span class="meta-value">University of Oslo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Project Content -->
+<div class="project-content">
+  
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+  <!-- Tags -->
+  <div class="project-tags">
+    <span class="tag">Interpretability</span>
+    <span class="tag">Neuroimaging</span>
+    <span class="tag">SHAP</span>
+    <span class="tag">Markov Random Fields</span>
+    <span class="tag">Graph Theory</span>
+    <span class="tag">Explainable AI</span>
+  </div>
+
+  <!-- Overview Section -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <p>
+      NeuroSHAP represents a fundamental advancement in explainable AI for neuroimaging, addressing critical limitations in how we interpret machine learning models applied to brain data. While SHAP (SHapley Additive exPlanations) has become the gold standard for model interpretability, its application to neuroimaging data suffers from a crucial flaw: the assumption that features are independent.
+    </p>
+    <p>
+      In the brain, neighboring voxels, functionally connected regions, and anatomically defined areas exhibit strong spatial and functional dependencies. This thesis develops NeuroSHAP, an enhanced framework that incorporates domain-specific constraints through Markov Random Fields and graph-theoretical approaches, providing biologically plausible explanations that respect the brain's inherent structure and connectivity.
+    </p>
+  </section>
+
+  <!-- Problem Statement -->
+  <div class="problem-statement">
+    <h3>The Independence Problem</h3>
+    <p>
+      Traditional SHAP assumes feature independence, leading to explanations that can be neurobiologically implausible. For example, isolated voxels might be highlighted as important while ignoring their spatial neighbors, or functionally connected regions might receive contradictory importance scores.
+    </p>
+    <p>
+      NeuroSHAP addresses this by modeling spatial and functional dependencies explicitly, ensuring that explanations align with known principles of brain organization.
+    </p>
+  </div>
+
+  <!-- Key Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-value">2D/3D</span>
+      <span class="stat-label">Spatial Constraints</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">MRF</span>
+      <span class="stat-label">Probabilistic Framework</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">ROI</span>
+      <span class="stat-label">Atlas Integration</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">Graph</span>
+      <span class="stat-label">Connectivity Modeling</span>
+    </div>
+  </div>
+
+  <!-- Theoretical Foundation -->
+  <section class="project-section">
+    <h2>Theoretical Foundation</h2>
+    
+    <h3>SHAP Limitations in Neuroimaging</h3>
+    <p>
+      Kernel SHAP approximates Shapley values by sampling feature coalitions, but this sampling assumes features can be combined independently. In neuroimaging:
+    </p>
+    <ul>
+      <li><strong>Spatial correlation:</strong> Adjacent voxels share similar signal characteristics</li>
+      <li><strong>Functional connectivity:</strong> Distant regions may be more related than spatial neighbors</li>
+      <li><strong>Anatomical constraints:</strong> Brain atlases define meaningful functional units</li>
+      <li><strong>Physiological dependencies:</strong> Neural activity propagates through connected networks</li>
+    </ul>
+
+    <h3>Markov Random Field Enhancement</h3>
+    <div class="math-notation">
+      P(x₁, x₂, ..., xₙ) = (1/Z) exp(-E(x₁, x₂, ..., xₙ))
+      <br><br>
+      Where the energy function E incorporates both data likelihood and spatial/connectivity priors
+    </div>
+    <p>
+      By modeling feature dependencies as a Markov Random Field, we ensure that explanations respect the conditional independence structure of brain data, leading to more coherent and interpretable results.
+    </p>
+  </section>
+
+  <!-- Methodological Approach -->
+  <section class="project-section">
+    <h2>Methodological Approach</h2>
+    
+    <h3>Multi-Scale Constraint Integration</h3>
+    <p>
+      NeuroSHAP operates at multiple spatial and functional scales:
+    </p>
+    <ul>
+      <li><strong>Voxel-level:</strong> Local spatial smoothness constraints based on 3D neighborhoods</li>
+      <li><strong>Region-level:</strong> Atlas-based grouping using anatomical and functional parcellations</li>
+      <li><strong>Network-level:</strong> Long-range connectivity constraints derived from diffusion MRI or functional connectivity</li>
+      <li><strong>Hierarchical:</strong> Multi-resolution analysis from individual voxels to large-scale networks</li>
+    </ul>
+
+    <h3>Graph-Theoretical Framework</h3>
+    <p>
+      The brain's connectivity structure is represented as graphs where:
+    </p>
+    <ul>
+      <li><strong>Nodes:</strong> Voxels, regions, or networks depending on analysis scale</li>
+      <li><strong>Edges:</strong> Spatial adjacency, functional correlation, or structural connectivity</li>
+      <li><strong>Weights:</strong> Strength of relationship derived from data or prior knowledge</li>
+      <li><strong>Community structure:</strong> Hierarchical organization reflecting brain modularity</li>
+    </ul>
+  </section>
+
+  <!-- Technical Innovation -->
+  <div class="key-findings">
+    <h3>Technical Innovations</h3>
+    <ul>
+      <li><strong>Constrained sampling:</strong> Modified coalition sampling that respects spatial and functional dependencies</li>
+      <li><strong>Regularized optimization:</strong> Energy functions that balance explanation fidelity with biological plausibility</li>
+      <li><strong>Multi-modal integration:</strong> Combining structural and functional connectivity for comprehensive constraints</li>
+      <li><strong>Adaptive neighborhoods:</strong> Dynamic definition of relevant feature neighborhoods based on data characteristics</li>
+      <li><strong>Validation metrics:</strong> Novel measures of explanation quality that incorporate neuroscientific knowledge</li>
+    </ul>
+  </div>
+
+  <!-- Implementation Strategy -->
+  <section class="project-section">
+    <h2>Implementation Strategy</h2>
+    
+    <h3>Phase 1: Theoretical Development</h3>
+    <ul>
+      <li>Formalize the mathematical framework for constraint-aware SHAP</li>
+      <li>Develop efficient algorithms for MRF-based explanation generation</li>
+      <li>Design validation metrics for biological plausibility</li>
+    </ul>
+
+    <h3>Phase 2: Software Implementation</h3>
+    <ul>
+      <li>Extend existing SHAP libraries with neuroimaging-specific constraints</li>
+      <li>Integrate with popular neuroimaging analysis frameworks (Nilearn, FSL, SPM)</li>
+      <li>Optimize for computational efficiency on high-dimensional brain data</li>
+    </ul>
+
+    <h3>Phase 3: Empirical Validation</h3>
+    <ul>
+      <li>Compare NeuroSHAP explanations with traditional SHAP on benchmark datasets</li>
+      <li>Validate against ground truth from synthetic data with known patterns</li>
+      <li>Evaluate clinical utility in real diagnostic classification tasks</li>
+    </ul>
+  </section>
+
+  <!-- Applications & Impact -->
+  <section class="project-section">
+    <h2>Applications & Impact</h2>
+    
+    <h3>Clinical Applications</h3>
+    <ul>
+      <li><strong>Disease diagnosis:</strong> More interpretable biomarkers for Alzheimer's, schizophrenia, and autism</li>
+      <li><strong>Treatment planning:</strong> Understanding which brain regions drive therapeutic decisions</li>
+      <li><strong>Precision medicine:</strong> Patient-specific explanations for personalized treatment</li>
+      <li><strong>Clinical validation:</strong> Explanations that align with known neuroanatomy and pathophysiology</li>
+    </ul>
+
+    <h3>Research Advancement</h3>
+    <ul>
+      <li><strong>Hypothesis generation:</strong> Scientifically grounded explanations that suggest new research directions</li>
+      <li><strong>Method validation:</strong> Tools for assessing whether ML models learn biologically meaningful patterns</li>
+      <li><strong>Cross-study reproducibility:</strong> Consistent explanations across different datasets and populations</li>
+      <li><strong>Multi-modal integration:</strong> Framework for combining insights from different imaging modalities</li>
+    </ul>
+  </section>
+
+  <!-- Technical Challenges -->
+  <section class="project-section">
+    <h2>Technical Challenges & Solutions</h2>
+    
+    <h3>Computational Complexity</h3>
+    <p>
+      Adding constraint satisfaction to SHAP significantly increases computational demands. Solutions include:
+    </p>
+    <ul>
+      <li><strong>Approximate inference:</strong> Efficient sampling strategies that maintain constraint satisfaction</li>
+      <li><strong>Hierarchical decomposition:</strong> Multi-scale analysis to reduce problem dimensionality</li>
+      <li><strong>GPU acceleration:</strong> Parallel computation of constraint-aware explanations</li>
+      <li><strong>Sparse representations:</strong> Exploiting brain data sparsity for computational efficiency</li>
+    </ul>
+
+    <h3>Constraint Selection</h3>
+    <p>
+      Determining appropriate constraints for different neuroimaging contexts requires:
+    </p>
+    <ul>
+      <li><strong>Data-driven approaches:</strong> Learning connectivity structure from the data itself</li>
+      <li><strong>Prior knowledge integration:</strong> Incorporating established neuroanatomical atlases</li>
+      <li><strong>Adaptive methods:</strong> Selecting constraints based on specific research questions</li>
+      <li><strong>Validation frameworks:</strong> Assessing constraint quality through cross-validation</li>
+    </ul>
+  </section>
+
+  <!-- Future Extensions -->
+  <section class="project-section">
+    <h2>Future Extensions</h2>
+    <p>
+      The NeuroSHAP framework opens several avenues for future development:
+    </p>
+    <ul>
+      <li><strong>Temporal dynamics:</strong> Extending to time-series neuroimaging data (fMRI, EEG, MEG)</li>
+      <li><strong>Multi-modal fusion:</strong> Unified explanations across structural, functional, and molecular imaging</li>
+      <li><strong>Causal inference:</strong> Moving beyond correlation to causal explanations of brain-behavior relationships</li>
+      <li><strong>Real-time applications:</strong> Online explanation generation for brain-computer interfaces</li>
+      <li><strong>Population studies:</strong> Explaining differences across demographic groups while preserving individual privacy</li>
+    </ul>
+  </section>
+
+  <!-- Expected Contributions -->
+  <section class="project-section">
+    <h2>Expected Contributions</h2>
+    
+    <h3>Scientific Impact</h3>
+    <ul>
+      <li>First comprehensive framework for biologically-constrained ML explanation in neuroimaging</li>
+      <li>Novel algorithms that bridge explainable AI and computational neuroscience</li>
+      <li>Validation of whether popular ML models learn neurobiologically meaningful patterns</li>
+    </ul>
+
+    <h3>Practical Impact</h3>
+    <ul>
+      <li>Open-source software tools for the neuroimaging community</li>
+      <li>Improved clinical decision support through interpretable AI</li>
+      <li>Enhanced reproducibility of neuroimaging machine learning studies</li>
+    </ul>
+  </section>
+
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+</div>
+
+<footer class="footer">
+<div class="footer-content">
+<div class="copyright">
+&copy; 2025 Strata Nova AS
+</div>
+<div class="contact">
+<a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+</div>
+</div>
+</footer>
+</div>
+
+<script src="../scripts/neuronAnimation.js"></script>
+<script src="../scripts/projectImageSync.js"></script>
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navMenu = document.querySelector('.top-nav ul');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      navMenu.classList.toggle('active');
+      menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        menuToggle.textContent = '☰';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hippocampal Circuit Dynamics in SEEG Data | Strata Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="../styles/project-template.css">
+<style>
+/* Project-specific styles */
+.project-hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+              url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-hero h1 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+  max-width: 900px;
+}
+
+.project-meta {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meta-label {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-value {
+  font-size: 1.1rem;
+  color: #dfefff;
+  margin-top: 0.3rem;
+}
+
+.project-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.project-section h2 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: #dfefff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.project-section h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #dfefff;
+}
+
+.project-section p, .project-section ul {
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.project-section ul {
+  padding-left: 2rem;
+}
+
+.project-section li {
+  margin-bottom: 0.5rem;
+}
+
+/* Key findings box */
+.key-findings {
+  background: rgba(20, 40, 80, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.key-findings h3 {
+  margin-top: 0;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #dfefff;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Back button */
+.back-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  margin: 3rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #dfefff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tag {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Code block styling */
+.code-block {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #dfefff;
+  overflow-x: auto;
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+<canvas id="bg"></canvas>
+
+<!-- Top Navigation -->
+<nav class="top-nav">
+<a href="../index.html">
+<img src="../assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+</a>
+<button class="mobile-menu-toggle">☰</button>
+<ul>
+<li><a href="../contact.html">Contact</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../people.html">People</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../insights.html">Insights</a></li>
+<li><a href="../services.html">Services</a></li>
+</ul>
+</nav>
+
+<!-- Project Hero -->
+<div class="project-hero">
+  <h1>Hippocampal Circuit Dynamics in SEEG Data</h1>
+  <div class="project-meta">
+    <div class="meta-item">
+      <span class="meta-label">Status</span>
+      <span class="meta-value">Ongoing</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Type</span>
+      <span class="meta-value">Summer Research</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Year</span>
+      <span class="meta-value">2024</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Institution</span>
+      <span class="meta-value">University of Oslo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Project Content -->
+<div class="project-content">
+  
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+  <!-- Tags -->
+  <div class="project-tags">
+    <span class="tag">Electrophysiology</span>
+    <span class="tag">Neural Oscillations</span>
+    <span class="tag">Memory Circuits</span>
+    <span class="tag">SEEG</span>
+    <span class="tag">Signal Processing</span>
+    <span class="tag">Python</span>
+  </div>
+
+  <!-- Overview Section -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <p>
+      This UiO:Life Science summer research project investigates the dynamic neural circuits underlying human memory formation through analysis of stereoelectroencephalography (SEEG) data. SEEG provides unprecedented access to deep brain structures in humans, allowing us to directly observe hippocampal activity and its interactions with cortical regions during memory processing.
+    </p>
+    <p>
+      The project focuses on theta oscillations (4-8 Hz), a hallmark of hippocampal function, examining how these rhythms coordinate activity across the medial temporal lobe memory system. By analyzing recordings from patients undergoing clinical monitoring for epilepsy, we gain unique insights into the neural mechanisms of human memory that are impossible to obtain through non-invasive methods.
+    </p>
+  </section>
+
+  <!-- Key Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-value">4-8 Hz</span>
+      <span class="stat-label">Theta Band</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">3</span>
+      <span class="stat-label">Brain Regions</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">1000 Hz</span>
+      <span class="stat-label">Sampling Rate</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">HPC+</span>
+      <span class="stat-label">Memory Circuit</span>
+    </div>
+  </div>
+
+  <!-- Methods Section -->
+  <section class="project-section">
+    <h2>Methods & Approach</h2>
+    
+    <h3>Data Acquisition & Processing</h3>
+    <p>
+      Working with intracranial recordings from epilepsy patients who have electrodes implanted for clinical purposes. These recordings provide millisecond-precision measurements of neural activity from specific brain regions.
+    </p>
+    <ul>
+      <li><strong>SEEG recordings:</strong> Direct electrical recordings from depth electrodes in hippocampus, entorhinal, and perirhinal cortex</li>
+      <li><strong>Preprocessing pipeline:</strong> Artifact removal, line noise filtering, and bad channel detection</li>
+      <li><strong>Anatomical localization:</strong> CT/MRI coregistration to precisely identify electrode locations</li>
+      <li><strong>Event detection:</strong> Identifying memory-related epochs during image viewing tasks</li>
+    </ul>
+
+    <h3>Signal Analysis Techniques</h3>
+    <p>
+      Developing automated pipelines for extracting and analyzing neural oscillations:
+    </p>
+    <ul>
+      <li><strong>Spectral analysis:</strong> Fast Fourier Transform and Morlet wavelet decomposition</li>
+      <li><strong>Phase-amplitude coupling:</strong> Examining cross-frequency interactions</li>
+      <li><strong>Coherence analysis:</strong> Quantifying synchronization between brain regions</li>
+      <li><strong>Information flow:</strong> Directed connectivity measures (Granger causality, Transfer Entropy)</li>
+    </ul>
+  </section>
+
+  <!-- Key Research Questions -->
+  <div class="key-findings">
+    <h3>Key Research Questions</h3>
+    <ul>
+      <li>How do theta oscillations coordinate information flow between hippocampus and cortex during memory encoding?</li>
+      <li>What are the temporal dynamics of hippocampal-cortical interactions during novel image processing?</li>
+      <li>How do different hippocampal subfields contribute to memory formation?</li>
+      <li>Can we identify oscillatory biomarkers that predict successful memory encoding?</li>
+      <li>How do pathological oscillations in epilepsy affect normal memory processing?</li>
+    </ul>
+  </div>
+
+  <!-- Technical Implementation -->
+  <section class="project-section">
+    <h2>Technical Implementation</h2>
+    
+    <h3>Analysis Pipeline</h3>
+    <div class="code-block">
+      Pipeline Components:<br>
+      1. Data Import (EDF/BrainVision formats)<br>
+      2. Preprocessing (MNE-Python)<br>
+      3. Time-frequency Analysis (SciPy/Custom)<br>
+      4. Statistical Testing (Cluster-based permutation)<br>
+      5. Visualization (Matplotlib/Plotly)
+    </div>
+
+    <h3>Technologies & Tools</h3>
+    <ul>
+      <li><strong>Python:</strong> Core analysis language with scientific computing stack</li>
+      <li><strong>MNE-Python:</strong> Electrophysiology data processing and visualization</li>
+      <li><strong>NumPy/SciPy:</strong> Numerical operations and signal processing</li>
+      <li><strong>Pandas:</strong> Data management and behavioral analysis</li>
+      <li><strong>Nilearn:</strong> Brain imaging and electrode localization</li>
+      <li><strong>HPC clusters:</strong> Parallel processing for large datasets</li>
+    </ul>
+
+    <h3>Challenges & Solutions</h3>
+    <p>
+      Working with clinical data presents unique technical and methodological challenges:
+    </p>
+    <ul>
+      <li><strong>Data heterogeneity:</strong> Standardizing analyses across different electrode configurations</li>
+      <li><strong>Artifact contamination:</strong> Developing robust methods to identify and remove epileptic activity</li>
+      <li><strong>Computational demands:</strong> Optimizing code for processing hundreds of gigabytes of data</li>
+      <li><strong>Statistical power:</strong> Implementing appropriate corrections for multiple comparisons</li>
+    </ul>
+  </section>
+
+  <!-- Neurobiological Insights -->
+  <section class="project-section">
+    <h2>Neurobiological Insights</h2>
+    
+    <h3>Circuit Organization</h3>
+    <p>
+      The project reveals how different components of the medial temporal lobe work together:
+    </p>
+    <ul>
+      <li><strong>Hippocampus:</strong> Central hub for binding disparate elements into coherent memories</li>
+      <li><strong>Entorhinal Cortex:</strong> Primary gateway for cortical inputs to hippocampus</li>
+      <li><strong>Perirhinal Cortex:</strong> Object recognition and familiarity processing</li>
+      <li><strong>Theta synchrony:</strong> Temporal framework for coordinating multi-region processing</li>
+    </ul>
+
+    <h3>Clinical Relevance</h3>
+    <p>
+      Understanding normal hippocampal function has direct implications for:
+    </p>
+    <ul>
+      <li>Epilepsy surgery planning and outcome prediction</li>
+      <li>Early detection of Alzheimer's disease</li>
+      <li>Development of brain-computer interfaces for memory enhancement</li>
+      <li>Understanding memory deficits in psychiatric disorders</li>
+    </ul>
+  </section>
+
+  <!-- Current Progress & Future Directions -->
+  <section class="project-section">
+    <h2>Current Progress & Future Directions</h2>
+    
+    <h3>Completed Milestones</h3>
+    <ul>
+      <li>Established preprocessing pipeline for SEEG data</li>
+      <li>Implemented theta detection algorithms</li>
+      <li>Created visualization tools for multi-channel recordings</li>
+      <li>Initial coherence analysis between hippocampus and cortex</li>
+    </ul>
+
+    <h3>Next Steps</h3>
+    <ul>
+      <li><strong>Machine learning:</strong> Developing classifiers to predict memory success from oscillatory features</li>
+      <li><strong>Real-time analysis:</strong> Creating tools for online detection of memory-related patterns</li>
+      <li><strong>Cross-species comparison:</strong> Relating human findings to animal models</li>
+      <li><strong>Closed-loop stimulation:</strong> Designing protocols to enhance memory through targeted stimulation</li>
+    </ul>
+  </section>
+
+  <!-- Collaboration & Impact -->
+  <section class="project-section">
+    <h2>Collaboration & Impact</h2>
+    <p>
+      This project is part of the UiO:Life Science convergence environment, bringing together expertise from neuroscience, medicine, physics, and computational science. The work contributes to the Human Brain Project and broader efforts to understand human cognition through direct neural recordings.
+    </p>
+    <p>
+      The automated analysis pipelines developed here will be made openly available, enabling other researchers to analyze SEEG data more efficiently and contributing to reproducible neuroscience research.
+    </p>
+  </section>
+
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+</div>
+
+<footer class="footer">
+<div class="footer-content">
+<div class="copyright">
+&copy; 2025 Strata Nova AS
+</div>
+<div class="contact">
+<a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+</div>
+</div>
+</footer>
+</div>
+
+<script src="../scripts/neuronAnimation.js"></script>
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navMenu = document.querySelector('.top-nav ul');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      navMenu.classList.toggle('active');
+      menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        menuToggle.textContent = '☰';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

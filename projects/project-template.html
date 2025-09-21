@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[PROJECT TITLE] | Strata Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="../styles/project-template.css">
+</head>
+<body>
+<div class="page-wrapper">
+<canvas id="bg"></canvas>
+
+<!-- Top Navigation -->
+<nav class="top-nav">
+<a href="../index.html">
+<img src="../assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
+</a>
+<button class="mobile-menu-toggle">☰</button>
+<ul>
+<li><a href="../contact.html">Contact</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../people.html">People</a></li>
+<li><a href="../projects.html">Projects</a></li>
+<li><a href="../insights.html">Insights</a></li>
+<li><a href="../services.html">Services</a></li>
+</ul>
+</nav>
+
+<!-- Project Hero -->
+<div class="project-hero">
+  <h1>[PROJECT TITLE]</h1>
+  <div class="project-meta">
+    <div class="meta-item">
+      <span class="meta-label">Status</span>
+      <span class="meta-value">[Ongoing/Completed/Planned]</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Type</span>
+      <span class="meta-value">[Project Type]</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Year</span>
+      <span class="meta-value">[YEAR]</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Institution</span>
+      <span class="meta-value">[Institution Name]</span>
+    </div>
+  </div>
+</div>
+
+<!-- Project Content -->
+<div class="project-content">
+  
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+  <!-- Tags -->
+  <div class="project-tags">
+    <span class="tag">Tag 1</span>
+    <span class="tag">Tag 2</span>
+    <span class="tag">Tag 3</span>
+  </div>
+
+  <!-- Overview Section -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <p>
+      [Project overview paragraph 1]
+    </p>
+    <p>
+      [Project overview paragraph 2]
+    </p>
+  </section>
+
+  <!-- Key Stats (Optional) -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-value">[Value]</span>
+      <span class="stat-label">[Label]</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">[Value]</span>
+      <span class="stat-label">[Label]</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">[Value]</span>
+      <span class="stat-label">[Label]</span>
+    </div>
+  </div>
+
+  <!-- Methods Section -->
+  <section class="project-section">
+    <h2>Methods & Approach</h2>
+    
+    <h3>[Subsection Title]</h3>
+    <p>
+      [Description of methods]
+    </p>
+    <ul>
+      <li>[Method point 1]</li>
+      <li>[Method point 2]</li>
+      <li>[Method point 3]</li>
+    </ul>
+  </section>
+
+  <!-- Key Findings (Optional) -->
+  <div class="key-findings">
+    <h3>Key Findings</h3>
+    <ul>
+      <li>[Finding 1]</li>
+      <li>[Finding 2]</li>
+      <li>[Finding 3]</li>
+    </ul>
+  </div>
+
+  <!-- Technical Details (Optional) -->
+  <section class="project-section">
+    <h2>Technical Implementation</h2>
+    
+    <h3>Technologies & Tools</h3>
+    <ul>
+      <li><strong>[Tool/Language]:</strong> [Description]</li>
+      <li><strong>[Tool/Language]:</strong> [Description]</li>
+    </ul>
+
+    <h3>Challenges & Solutions</h3>
+    <p>
+      [Description of challenges faced]
+    </p>
+    <ul>
+      <li><strong>[Challenge]:</strong> [Solution]</li>
+      <li><strong>[Challenge]:</strong> [Solution]</li>
+    </ul>
+  </section>
+
+  <!-- Impact & Future Work (Optional) -->
+  <section class="project-section">
+    <h2>Impact & Future Directions</h2>
+    <p>
+      [Description of impact and future work]
+    </p>
+  </section>
+
+  <!-- Collaborations (Optional) -->
+  <section class="project-section">
+    <h2>Collaborations & Acknowledgments</h2>
+    <p>
+      [Description of collaborations]
+    </p>
+  </section>
+
+  <!-- Back button -->
+  <a href="../projects.html" class="back-button">← Back to Projects</a>
+  
+</div>
+
+<footer class="footer">
+<div class="footer-content">
+<div class="copyright">
+&copy; 2025 Strata Nova AS
+</div>
+<div class="contact">
+<a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
+</div>
+</div>
+</footer>
+</div>
+
+<script src="../scripts/neuronAnimation.js"></script>
+<script src="../scripts/projectImageSync.js"></script>
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navMenu = document.querySelector('.top-nav ul');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      navMenu.classList.toggle('active');
+      menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        menuToggle.textContent = '☰';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

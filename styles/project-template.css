@@ -1,0 +1,169 @@
+/* Shared styles for all individual project pages */
+
+/* Project-specific styles */
+.project-hero {
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-hero h1 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+  max-width: 900px;
+}
+
+.project-meta {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meta-label {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-value {
+  font-size: 1.1rem;
+  color: #dfefff;
+  margin-top: 0.3rem;
+}
+
+.project-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.project-section h2 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: #dfefff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.project-section h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #dfefff;
+}
+
+.project-section p, .project-section ul {
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.project-section ul {
+  padding-left: 2rem;
+}
+
+.project-section li {
+  margin-bottom: 0.5rem;
+}
+
+/* Key findings box */
+.key-findings {
+  background: rgba(20, 40, 80, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.key-findings h3 {
+  margin-top: 0;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #dfefff;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Back button */
+.back-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  margin: 3rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #dfefff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tag {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}

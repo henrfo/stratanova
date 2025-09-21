@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background: #000;
     color: white;
     font-family: 'Inter', sans-serif;
@@ -22,6 +22,7 @@
     top: 0;
     left: 0;
     z-index: 0;
+    pointer-events: none;
   }
   
   /* ==========================================================================
@@ -77,24 +78,42 @@
     }
   }
   
-  /* Logo in navigation */
+  /* Navigation container with proper layout */
+  .top-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 20px !important;
+  }
+  
+  /* Logo in navigation - positioned on left */
+  .top-nav > a {
+    display: flex !important;
+    align-items: center !important;
+    transition: opacity 0.2s ease !important;
+    flex-shrink: 0 !important;
+  }
+  
   .top-nav .logo-nav {
     width: 70px !important;
     height: auto !important;
     opacity: 0.85 !important;
-    margin: 0 auto 8px !important;
-    display: block !important;
   }
   
-  /* Navigation list container */
+  .top-nav > a:hover {
+    opacity: 1 !important;
+  }
+  
+  /* Navigation list container - centered and shifted to align with content */
   .top-nav ul {
     list-style: none !important;
     padding: 0 !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
     display: flex !important;
     justify-content: center !important;
     gap: 2rem !important;
     flex-wrap: wrap !important;
+    flex: 1 !important;
   }
   
   /* Navigation list items */
@@ -110,15 +129,11 @@
     color: #dfefff !important;
   }
   
-  /* Clickable logo container */
-  .top-nav > a {
-    display: inline-block !important;
-    transition: opacity 0.2s ease !important;
-    margin-left: 20px !important; /* Add space from left edge */
-  }
-  
-  .top-nav > a:hover {
-    opacity: 1 !important;
+  /* Empty space on right to balance logo */
+  .top-nav::after {
+    content: "" !important;
+    width: 70px !important;
+    flex-shrink: 0 !important;
   }
   
   /* ==========================================================================
@@ -127,14 +142,14 @@
   .content {
     position: relative;
     z-index: 1;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
     /* Adjusted padding to account for fixed header */
-    padding-top: 160px !important; /* This value should be adjusted based on your header height */
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-top: 90px !important; /* Reduced spacing between menu and content */
+    padding-left: 2rem;
+    padding-right: 2rem;
     padding-bottom: 5rem;
-    text-align: left;
+    text-align: center;
   }
   
   
@@ -159,9 +174,11 @@
   }
   
   h1 {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
     margin-top: 4rem;
+    margin-bottom: 2rem;
     text-transform: uppercase;
+    text-align: center;
   }
   
   h2 {
@@ -181,7 +198,18 @@
     color: #ccc;
     line-height: 1.6;
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem auto;
+    text-align: left;
+  }
+
+  /* Lists */
+  ol, ul {
+    max-width: 600px;
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0 auto 1.5rem auto;
+    text-align: left;
   }
   
   /* General links */
@@ -361,30 +389,10 @@
     
     /* Adjust padding for smaller screens */
     .content {
-      padding-top: 180px !important; /* More space for stacked nav on mobile */
+      padding-top: 100px !important; /* Reduced spacing between menu and content on mobile */
     }
   }
 
-  /* Position logo container to the left */
-  .top-nav > a {
-    display: inline-block !important;
-    float: left !important;
-    margin-left: 1.5rem !important;
-    margin-right: auto !important;
-  }
-  
-  /* Position the logo image to the left */
-  .top-nav .logo-nav {
-    margin: 0 !important;
-    text-align: left !important;
-  }
-  
-  /* Add clearfix to prevent layout issues */
-  .top-nav:after {
-    content: "" !important;
-    display: table !important;
-    clear: both !important;
-  }
 }
 
 /* ==========================================================================
@@ -406,31 +414,69 @@
     
     /* Adjust padding for smaller screens */
     .content {
-      padding-top: 180px !important; /* More space for stacked nav on mobile */
+      padding-top: 100px !important; /* Reduced spacing between menu and content on mobile */
     }
     
-    /* Position logo container to the left */
-    .top-nav > a {
-      display: inline-block !important;
-      float: left !important;
-      margin-left: 1.5rem !important;
-      margin-right: auto !important;
-    }
-    
-    /* Position the logo image to the left */
-    .top-nav .logo-nav {
-      margin: 0 !important;
-      text-align: left !important;
-    }
-    
-    /* Add clearfix to prevent layout issues */
-    .top-nav:after {
-      content: "" !important;
-      display: table !important;
-      clear: both !important;
-    }
   }
   
+  /* ==========================================================================
+     Centered Navigation Alternative Style
+     ========================================================================== */
+  /* Use .top-nav.centered for the alternative centered layout */
+  .top-nav.centered {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    background-color: transparent !important;
+    text-align: center !important;
+    margin-top: 2rem !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  
+  .top-nav.centered::before {
+    display: none !important;
+  }
+  
+  .top-nav.centered::after {
+    display: none !important;
+  }
+  
+  .top-nav.centered > a {
+    display: block !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .top-nav.centered .logo-nav {
+    width: 70px !important;
+    height: auto !important;
+    opacity: 0.85 !important;
+  }
+  
+  .top-nav.centered ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    flex-wrap: wrap !important;
+    flex: none !important;
+  }
+  
+  .top-nav.centered ul li a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+    transition: color 0.2s ease !important;
+  }
+  
+  .top-nav.centered ul li a:hover {
+    color: #dfefff !important;
+  }
+
   /* ==========================================================================
      Mobile Navigation Enhancements
      ========================================================================== */
