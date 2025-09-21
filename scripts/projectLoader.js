@@ -1,48 +1,62 @@
-// Automated Project Card Generator
-// This script automatically generates project cards from project files
-
 class ProjectLoader {
   constructor() {
-    this.projectsConfig = [
-      {
-        id: 'biomarkers-cognitive-training',
-        title: 'Bachelor Thesis: Exploring Biomarkers of Cognitive Training Responsiveness After Stroke',
-        description: 'A multimodal ML approach examining relationships between brain features and cognitive training outcomes in stroke patients. Integrated structural MRI, blood biomarkers, and normative deviations to identify predictive patterns.',
-        tags: ['Neuroscience', 'Stroke', 'Machine Learning'],
-        status: 'completed',
-        image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
-      },
-      {
-        id: 'hippocampal-memory-models',
-        title: 'Exploring Neural Models of Hippocampal Memory',
-        description: 'Simula Summer School project implementing Hopfield Networks and Kanerva Machines to model hippocampal memory functions, including pattern completion and separation mechanisms underlying spatial and episodic memory.',
-        tags: ['Computational Neuroscience', 'Memory Systems', 'Neural Networks'],
-        status: 'ongoing',
-        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
-      },
-      {
-        id: 'seeg-analysis',
-        title: 'Hippocampal Circuit Dynamics in SEEG Data',
-        description: 'UiO:Life Science project analyzing intracranial recordings to investigate theta oscillations in hippocampal-cortical circuits during memory processing. Building automated pipelines for neural signal analysis.',
-        tags: ['Electrophysiology', 'Neural Oscillations', 'Memory Circuits'],
-        status: 'ongoing',
-        image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
-      },
-      {
-        id: 'neuroshap',
-        title: 'Master Thesis: NeuroSHAP',
-        description: 'Enhancing SHAP interpretability for neuroimaging through spatial constraints and Markov Random Fields. Developing biologically-informed explanations that respect brain connectivity and regional dependencies.',
-        tags: ['Interpretability', 'Neuroimaging', 'SHAP'],
-        status: 'planned',
-        image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
-      }
-    ];
-    
-    this.statusOrder = {
-      'planned': 1,
-      'ongoing': 2, 
-      'completed': 3
+    this.projectFiles = [];
+  }
+
+  async loadProjectConfig() {
+    try {
+      const response = await fetch('scripts/projects/projects-list.json');
+      const config = await response.json();
+      this.projectFiles = config.projects;
+    } catch (error) {
+      this.projectFiles = [];
+    }
+  }
+
+  async loadProjectData(filename) {
+    try {
+      const response = await fetch(`projects/${filename}`);
+      if (!response.ok) return null;
+      
+      const html = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      
+      // Extract data from existing HTML structure
+      const title = doc.querySelector('.project-hero h1')?.textContent?.trim();
+      const statusElement = doc.querySelector('.meta-value');
+      const status = statusElement?.textContent?.toLowerCase()?.trim();
+      const tags = Array.from(doc.querySelectorAll('.project-tags .tag')).map(
+        tag => tag.textContent.trim()
+      );
+      
+      // Extract first paragraph as description
+      const description = doc.querySelector('.project-section p')?.textContent?.trim();
+      
+      // Extract filename as ID (remove .html extension)
+      const id = filename.replace('.html', '');
+      
+      return {
+        id: id,
+        title: title,
+        description: description,
+        status: status,
+        image: this.getProjectImage(id),
+        tags: tags
+      };
+    } catch (error) {
+      return null;
+    }
+  }
+
+  getProjectImage(id) {
+    const imageMap = {
+      'biomarkers-cognitive-training': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'hippocampal-memory-models': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'seeg-analysis': 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'neuroshap': 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
     };
+    return imageMap[id] || '';
   }
 
   getStatusClass(status) {
@@ -77,45 +91,37 @@ class ProjectLoader {
   }
 
   sortProjects(projects) {
+    const statusOrder = {
+      'planned': 1,
+      'ongoing': 2, 
+      'completed': 3
+    };
     return projects.sort((a, b) => {
-      return this.statusOrder[a.status] - this.statusOrder[b.status];
+      return statusOrder[a.status] - statusOrder[b.status];
     });
   }
 
-  loadProjects() {
+  async loadProjects() {
     const projectsGrid = document.querySelector('.projects-grid');
     if (!projectsGrid) return;
 
-    // Clear existing content
-    projectsGrid.innerHTML = '';
+    await this.loadProjectConfig();
+    
+    const projectPromises = this.projectFiles.map(filename => this.loadProjectData(filename));
+    const projects = await Promise.all(projectPromises);
+    const validProjects = projects.filter(project => project !== null);
     
     // Sort projects by status
-    const sortedProjects = this.sortProjects(this.projectsConfig);
+    const sortedProjects = this.sortProjects(validProjects);
     
-    // Generate and insert project cards
+    projectsGrid.innerHTML = '';
     sortedProjects.forEach(project => {
       projectsGrid.innerHTML += this.createProjectCard(project);
     });
   }
-
-  // Method to add a new project (for easy expansion)
-  addProject(projectData) {
-    this.projectsConfig.push(projectData);
-    this.loadProjects(); // Reload the grid
-  }
-
-  // Method to update project configuration from external source
-  updateConfig(newConfig) {
-    this.projectsConfig = newConfig;
-    this.loadProjects();
-  }
 }
 
-// Initialize and load projects when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   const projectLoader = new ProjectLoader();
-  projectLoader.loadProjects();
-  
-  // Make projectLoader globally available for external configuration
-  window.projectLoader = projectLoader;
+  await projectLoader.loadProjects();
 });
