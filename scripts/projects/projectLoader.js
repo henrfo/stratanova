@@ -72,7 +72,7 @@ class ProjectLoader {
     const statusLabel = this.getStatusLabel(project.status);
     
     return `
-      <a href="projects/${project.id}.html" class="project-card">
+      <a href="projects/${project.id}" class="project-card">
         <div class="project-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${project.image}');">
           <span class="project-status ${statusClass}">${statusLabel}</span>
         </div>
