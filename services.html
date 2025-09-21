@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Services – Strata Nova</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="styles/main.css">
 <style>
   /* Page wrapper for sticky footer */
@@ -14,25 +15,152 @@
     flex-direction: column;
   }
 
-  /* Override main.css for simple centered content */
+  /* Service card grid styles similar to people page */
   .content {
     flex: 1;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 2rem 1rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 100px 2rem 2rem 2rem !important;
+    width: 100% !important;
   }
-  
-  .content h1 {
-    margin-bottom: 2rem !important;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
-  
-  .content p {
-    max-width: none !important;
-    text-align: center !important;
-    margin: 0 !important;
+
+  /* Services grid - similar to people grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    justify-items: start;
+  }
+
+  .service-card {
+    background: rgba(20, 40, 80, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    color: inherit;
+    width: 100%;
+    max-width: 350px;
+    text-decoration: none;
+  }
+
+  a.service-card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Service icon area */
+  .service-icon-area {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(20, 30, 60, 0.3), rgba(30, 50, 90, 0.3));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    color: #a9c8e6;
+  }
+
+  /* Service content */
+  .service-content {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .service-name {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 0 0 0.5rem 0;
+    color: white;
+    line-height: 1.4;
+  }
+
+  .service-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 1rem;
+  }
+
+  .service-features {
+    text-align: left;
+    font-size: 0.85rem;
+    color: #a9c8e6;
+    line-height: 1.8;
+  }
+
+  .service-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .service-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-features li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #dfefff;
+  }
+
+  /* Learn more link */
+  .learn-more {
+    display: inline-block;
+    color: #dfefff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+  }
+
+  .learn-more:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .learn-more::after {
+    content: " →";
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
   }
 </style>
 </head>
@@ -59,7 +187,10 @@
   <!-- Services Content -->
   <div class="content">
     <h1>Services</h1>
-    <p>Coming soon</p>
+    
+    <div class="services-grid">
+      <!-- Service cards will be automatically generated here by serviceLoader.js -->
+    </div>
   </div>
   
   <footer class="footer">
@@ -75,6 +206,7 @@
 </div>
 
 <script src="scripts/neuronAnimation.js"></script>
+<script src="scripts/serviceLoader.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
