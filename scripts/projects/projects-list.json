@@ -3,6 +3,9 @@
     "biomarkers-cognitive-training.html",
     "hippocampal-memory-models.html",
     "seeg-analysis.html",
-    "neuroshap.html"
+    "neuroshap.html",
+    "arctic-shadow-tracker.html",
+    "strokeml.html",
+    "quantumml.html"
   ]
 }
