@@ -490,7 +490,7 @@
     .top-nav ul {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       padding: 0 !important;
       margin: 0 !important;
       opacity: 0;
@@ -498,7 +498,7 @@
 
     /* Display menu when active class is added (via JavaScript) */
     .top-nav ul.active {
-      max-height: calc(100vh - 80px);
+      max-height: 550px;
       overflow-y: auto;
       overflow-x: hidden;
       opacity: 1;
