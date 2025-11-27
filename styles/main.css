@@ -394,61 +394,64 @@
   }
   
   /* ==========================================================================
-     Centered Navigation Alternative Style
+     Centered Navigation Alternative Style (Desktop Only)
      ========================================================================== */
   /* Use .top-nav.centered for the alternative centered layout */
-  .top-nav.centered {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    width: auto !important;
-    background-color: transparent !important;
-    text-align: center !important;
-    margin-top: 2rem !important;
-    padding: 0 !important;
-    display: block !important;
-  }
-  
-  .top-nav.centered::before {
-    display: none !important;
-  }
-  
-  .top-nav.centered::after {
-    display: none !important;
-  }
-  
-  .top-nav.centered > a {
-    display: block !important;
-    margin-bottom: 1rem !important;
-  }
-  
-  .top-nav.centered .logo-nav {
-    width: 70px !important;
-    height: auto !important;
-    opacity: 0.85 !important;
-  }
-  
-  .top-nav.centered ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
-    display: flex !important;
-    justify-content: center !important;
-    gap: 2rem !important;
-    flex-wrap: wrap !important;
-    flex: none !important;
-  }
-  
-  .top-nav.centered ul li a {
-    color: #ffffff !important;
-    text-decoration: none !important;
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-    transition: color 0.2s ease !important;
-  }
-  
-  .top-nav.centered ul li a:hover {
-    color: #dfefff !important;
+  /* Wrapped in min-width media query to not interfere with mobile menu */
+  @media (min-width: 769px) {
+    .top-nav.centered {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: auto !important;
+      background-color: transparent !important;
+      text-align: center !important;
+      margin-top: 2rem !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+    .top-nav.centered::before {
+      display: none !important;
+    }
+
+    .top-nav.centered::after {
+      display: none !important;
+    }
+
+    .top-nav.centered > a {
+      display: block !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .top-nav.centered .logo-nav {
+      width: 70px !important;
+      height: auto !important;
+      opacity: 0.85 !important;
+    }
+
+    .top-nav.centered ul {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      justify-content: center !important;
+      gap: 2rem !important;
+      flex-wrap: wrap !important;
+      flex: none !important;
+    }
+
+    .top-nav.centered ul li a {
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 1rem !important;
+      font-weight: 300 !important;
+      transition: color 0.2s ease !important;
+    }
+
+    .top-nav.centered ul li a:hover {
+      color: #dfefff !important;
+    }
   }
 
   /* ==========================================================================
