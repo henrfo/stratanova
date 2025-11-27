@@ -454,11 +454,7 @@
   /* ==========================================================================
      Mobile Navigation Enhancements
      ========================================================================== */
-  /* Hamburger menu button for mobile */
-  .mobile-menu-toggle {
-    display: none;
-  }
-  
+
   @media (max-width: 768px) {
     /* Hide original menu on mobile and set up for menu toggle functionality */
     .top-nav ul {
