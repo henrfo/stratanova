@@ -550,7 +550,7 @@
     
     /* Improve top nav appearance on mobile */
     .top-nav {
-      padding: 10px 0 !important;
+      padding: 10px 1rem !important;
       text-align: center !important;
     }
   }
