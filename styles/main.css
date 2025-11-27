@@ -552,19 +552,22 @@
     .mobile-menu-toggle {
       position: absolute;
       right: 1.5rem;
-      top: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
       background: transparent;
       border: none;
       color: white;
-      font-size: 1.5rem;
+      font-size: 2rem;
       cursor: pointer;
       z-index: 10000;
-      min-width: 44px;
-      min-height: 44px;
-      padding: 10px;
+      min-width: 60px;
+      min-height: 60px;
+      padding: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: auto;
+      touch-action: manipulation;
     }
     
     /* Improve top nav appearance on mobile */
