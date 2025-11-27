@@ -195,12 +195,11 @@
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.mobile-menu-toggle');
       const navMenu = document.querySelector('.top-nav ul');
-      
+
       if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function(e) {
           e.stopPropagation();
           navMenu.classList.toggle('active');
-          // Change hamburger icon to X when menu is open
           menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
@@ -210,6 +209,15 @@
             navMenu.classList.remove('active');
             menuToggle.textContent = '☰';
           }
+        });
+
+        // Close menu when clicking a menu item
+        const menuItems = navMenu.querySelectorAll('a');
+        menuItems.forEach(item => {
+          item.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            menuToggle.textContent = '☰';
+          });
         });
       }
     });
