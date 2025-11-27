@@ -229,10 +229,19 @@
     const navMenu = document.querySelector('.top-nav ul');
     
     if (menuToggle && navMenu) {
-      menuToggle.addEventListener('click', function() {
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         navMenu.classList.toggle('active');
         // Change hamburger icon to X when menu is open
         menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.textContent = '☰';
+        }
       });
     }
   });
