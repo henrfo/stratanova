@@ -201,12 +201,38 @@ canvas {
   color: white;
 }
 
+/* Development Mode - Disable project card clicking */
+.dev-mode .project-card {
+  pointer-events: none;
+  cursor: default;
+}
+
+.dev-mode .project-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Development badge overlay */
+.dev-mode .project-card::after {
+  content: 'Under Development';
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(237, 108, 2, 0.9);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  z-index: 10;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-content {
     flex-direction: column;
     gap: 1rem;
@@ -215,7 +241,7 @@ canvas {
 }
 </style>
 </head>
-<body>
+<body class="dev-mode">
 <div class="page-wrapper">
 <canvas id="bg"></canvas>
 
