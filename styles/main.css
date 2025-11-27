@@ -380,43 +380,17 @@
       gap: 1rem;
       text-align: center;
     }
-    
+
     /* Navigation adjustments */
     .top-nav ul {
       flex-direction: column;
       gap: 1rem;
     }
-    
+
     /* Adjust padding for smaller screens */
     .content {
       padding-top: 100px !important; /* Reduced spacing between menu and content on mobile */
     }
-  }
-
-}
-
-/* ==========================================================================
-   Responsive adjustments
-   ========================================================================== */
-   @media (max-width: 768px) {
-    /* Footer adjustments */
-    .footer-content {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
-    
-    /* Navigation adjustments */
-    .top-nav ul {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    /* Adjust padding for smaller screens */
-    .content {
-      padding-top: 100px !important; /* Reduced spacing between menu and content on mobile */
-    }
-    
   }
   
   /* ==========================================================================
