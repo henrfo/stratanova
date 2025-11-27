@@ -167,3 +167,75 @@
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
 }
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .project-hero {
+    min-height: 200px;
+    padding: 1.5rem 1rem;
+  }
+
+  .project-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .project-meta {
+    gap: 1rem;
+  }
+
+  .meta-value {
+    font-size: 0.95rem;
+  }
+
+  .project-content {
+    padding: 0 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .project-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .key-findings {
+    padding: 1.5rem;
+  }
+
+  .back-button {
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-hero {
+    min-height: 150px;
+    padding: 1rem 0.5rem;
+  }
+
+  .project-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .meta-label {
+    font-size: 0.7rem;
+  }
+
+  .meta-value {
+    font-size: 0.85rem;
+  }
+
+  .project-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .stat-card .stat-value {
+    font-size: 1.5rem;
+  }
+}

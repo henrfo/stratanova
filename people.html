@@ -168,6 +168,39 @@
         grid-template-columns: 1fr;
         justify-items: center; /* Center on mobile */
       }
+
+      .person-social a {
+        padding: 10px;
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+      }
+
+      .person-thumbnail img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .person-name {
+        font-size: 1.1rem;
+      }
+
+      .person-social a {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
