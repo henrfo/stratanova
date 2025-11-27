@@ -498,7 +498,7 @@
 
     /* Display menu when active class is added (via JavaScript) */
     .top-nav ul.active {
-      max-height: 100vh;
+      max-height: calc(100vh - 80px);
       overflow-y: auto;
       overflow-x: hidden;
       opacity: 1;
@@ -508,11 +508,13 @@
       background-color: rgba(0, 0, 0, 0.95) !important;
       backdrop-filter: blur(10px) !important;
       clear: both !important;
-      position: absolute !important;
-      top: 100% !important;
+      position: fixed !important;
+      top: 70px !important;
       left: 0 !important;
+      right: 0 !important;
       border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
       -webkit-overflow-scrolling: touch !important;
+      z-index: 9998 !important;
     }
 
     /* Style individual menu items better on mobile */
