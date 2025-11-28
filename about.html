@@ -203,13 +203,15 @@
           menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-          if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            menuToggle.textContent = '☰';
-          }
-        });
+        // Close menu when clicking outside (delayed to prevent event conflict)
+        setTimeout(() => {
+          document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+              navMenu.classList.remove('active');
+              menuToggle.textContent = '☰';
+            }
+          });
+        }, 100);
 
         // Close menu when clicking a menu item
         const menuItems = navMenu.querySelectorAll('a');
