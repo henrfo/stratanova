@@ -464,66 +464,90 @@
   }
 
   @media (max-width: 768px) {
-    /* Hide original menu on mobile and set up for menu toggle functionality */
+    /* Mobile menu base state - hidden by default */
     .top-nav ul {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      /* Override desktop centering styles */
+      justify-content: flex-start !important;
+      align-items: stretch !important;
+      gap: 0 !important;
+      flex: none !important;
+      flex-wrap: nowrap !important;
+
+      /* Hidden by default - completely out of layout */
+      display: none;
       padding: 0 !important;
       margin: 0 !important;
-      opacity: 0;
     }
 
-    /* Display menu when active class is added (via JavaScript) */
+    /* Active state - show menu with full structure */
     .top-nav ul.active {
-      max-height: 550px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      opacity: 1;
-      padding-top: 1.5rem !important;
-      padding-bottom: 1.5rem !important;
-      width: 100% !important;
-      background-color: rgba(0, 0, 0, 0.95) !important;
-      backdrop-filter: blur(10px) !important;
-      clear: both !important;
+      /* Fixed positioning */
       position: fixed !important;
-      top: 70px !important;
+      top: 40px !important;
       left: 0 !important;
       right: 0 !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-      -webkit-overflow-scrolling: touch !important;
+      width: 100% !important;
       z-index: 9998 !important;
-    }
 
-    /* Style individual menu items better on mobile */
-    .top-nav ul li {
-      margin: 0.5rem 0 !important;
-      width: 100% !important;
-      text-align: center !important;
-    }
-
-    /* Make menu items take more space */
-    .top-nav ul li a {
-      padding: 0.75rem 1rem !important;
+      /* Horizontal flex layout */
       display: flex !important;
-      align-items: center !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
       justify-content: center !important;
-      min-height: 44px !important;
-      width: 100% !important;
-      max-width: 300px !important;
-      margin: 0 auto !important;
+      align-items: center !important;
+
+      /* Styling */
+      background-color: rgba(0, 0, 0, 0.95) !important;
+      backdrop-filter: blur(10px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+      /* Overflow handling */
+      overflow-x: auto;
+      overflow-y: visible;
+      -webkit-overflow-scrolling: touch !important;
+
+      /* Compact spacing */
+      padding: 0.75rem 1rem !important;
+      gap: 0.5rem !important;
+
+      /* Smooth appearance */
+      opacity: 1;
+      visibility: visible;
+
+      .top-nav ul.active li,
+      .top-nav ul.active li a {
+        display: inline-flex !important;  /* or flex */
+        width: auto !important;           /* no full-width buttons */
+      }
+    }
+
+    /* Style individual menu items - compact horizontal */
+    .top-nav ul li {
+      margin: 0 !important;
+      width: auto !important;
       text-align: center !important;
-      border-radius: 4px !important;
-      background-color: rgba(255, 255, 255, 0.08) !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Make menu items compact */
+    .top-nav ul li a {
+      padding: 0.5rem 1rem !important;
+      display: inline-block !important;
+      min-height: auto !important;
+      width: auto !important;
+      white-space: nowrap !important;
+      text-align: center !important;
+      border-radius: 20px !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
       color: #ffffff !important;
-      font-size: 1rem !important;
+      font-size: 0.9rem !important;
       transition: background-color 0.2s ease !important;
     }
 
     /* Hover/active state for menu items */
     .top-nav ul li a:hover,
     .top-nav ul li a:active {
-      background-color: rgba(255, 255, 255, 0.15) !important;
+      background-color: rgba(255, 255, 255, 0.2) !important;
     }
     
     /* Menu toggle button styling */
