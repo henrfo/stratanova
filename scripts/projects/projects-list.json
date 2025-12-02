@@ -1,11 +1,32 @@
 {
   "projects": [
-    "biomarkers-cognitive-training.html",
-    "hippocampal-memory-models.html",
-    "seeg-analysis.html",
-    "neuroshap.html",
-    "arctic-shadow-tracker.html",
-    "strokeml.html",
-    "quantumml.html"
+    {
+      "file": "biomarkers-cognitive-training.html",
+      "categories": ["neuroscience"]
+    },
+    {
+      "file": "hippocampal-memory-models.html",
+      "categories": ["models"]
+    },
+    {
+      "file": "seeg-analysis.html",
+      "categories": ["neuroscience"]
+    },
+    {
+      "file": "neuroshap.html",
+      "categories": ["xai"]
+    },
+    {
+      "file": "arctic-shadow-tracker.html",
+      "categories": ["geospatial"]
+    },
+    {
+      "file": "strokeml.html",
+      "categories": ["models"]
+    },
+    {
+      "file": "quantumml.html",
+      "categories": ["models"]
+    }
   ]
 }

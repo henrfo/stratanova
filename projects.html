@@ -291,10 +291,8 @@ canvas {
 
 <!-- Projects Content -->
 <div class="content">
-  <h1>Projects</h1>
-  
-  <div class="projects-grid">
-    <!-- Project cards will be automatically generated here by projectLoader.js -->
+  <div class="project-tree-container">
+    <!-- Tree structure will be automatically generated here by projectTree.js -->
   </div>
 </div>
 
@@ -310,8 +308,10 @@ canvas {
 </footer>
 </div>
 
+<link rel="stylesheet" href="styles/project-tree.css">
 <script src="scripts/animation/neuronAnimation.js"></script>
 <script src="scripts/projects/projectLoader.js"></script>
+<script src="scripts/projects/projectTree.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle

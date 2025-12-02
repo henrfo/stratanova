@@ -1,0 +1,354 @@
+/* Project Tree Container */
+.project-tree-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Tree Header - PROJECTS heading */
+.tree-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.projects-heading {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 0;
+  color: white;
+}
+
+/* Category Row at Top */
+.category-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+.category-label {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(20, 40, 80, 0.2);
+  cursor: default;
+  white-space: nowrap;
+}
+
+/* ML Category Group with subcategories */
+.category-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.parent-category-label {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(20, 40, 80, 0.2);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.subcategory-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.subcategory {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(20, 40, 80, 0.15);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Shared Projects Row Below - Flexbox layout */
+.projects-row {
+  position: relative;
+  z-index: 10;
+  margin-top: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 2rem 1rem;
+}
+
+/* Project Cards - Flexbox positioned */
+.project-card-tree {
+  background: rgba(20, 40, 80, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 140px;
+  position: relative;
+}
+
+.project-card-tree:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Expanded State - Only 40% larger */
+.project-card-tree.expanded {
+  width: 196px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+  z-index: 10;
+}
+
+/* Thumbnail */
+.project-thumbnail-tree {
+  width: 100%;
+  height: 60px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(20, 30, 60, 0.3);
+}
+
+.project-card-tree.expanded .project-thumbnail-tree {
+  height: 80px;
+}
+
+.project-status {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 2px 5px;
+  border-radius: 6px;
+  font-size: 0.55rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.status-ongoing {
+  background-color: rgba(25, 118, 210, 0.8);
+}
+
+.status-completed {
+  background-color: rgba(46, 125, 50, 0.8);
+}
+
+.status-planned {
+  background-color: rgba(237, 108, 2, 0.8);
+}
+
+/* Content */
+.project-content-tree {
+  padding: 0.5rem;
+}
+
+.project-card-tree.expanded .project-content-tree {
+  padding: 0.7rem;
+}
+
+.project-title-tree {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin: 0;
+  color: white;
+  line-height: 1.2;
+}
+
+.project-card-tree.expanded .project-title-tree {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Description - Only visible when expanded */
+.project-description-tree {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #ccc;
+  margin: 0.5rem 0;
+  opacity: 0;
+  animation: fadeIn 0.3s ease 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Tags - Only visible when expanded */
+.project-tags-tree {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.5rem 0;
+  opacity: 0;
+  animation: fadeIn 0.3s ease 0.25s forwards;
+}
+
+.project-tags-tree .tag {
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* SVG Connection Lines */
+.connection-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: visible;
+}
+
+.connection-lines line {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1.5;
+  transition: all 0.3s ease;
+}
+
+.connection-lines line.heading-line {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 2;
+}
+
+.connection-lines line.subcategory-line {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 2;
+}
+
+.connection-lines line.project-line {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1.5;
+}
+
+/* Ensure elements are properly layered */
+.tree-header {
+  position: relative;
+  z-index: 10;
+}
+
+.category-row {
+  position: relative;
+  z-index: 10;
+}
+
+.projects-row {
+  position: relative;
+  z-index: 10;
+}
+
+/* Mobile Styles */
+@media (max-width: 1024px) {
+  .category-row {
+    gap: 2rem;
+  }
+
+  .subcategory-row {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Revert to simple grid on mobile - no tree lines */
+  .project-tree-container {
+    padding: 1rem 0;
+  }
+
+  .tree-header {
+    margin-bottom: 2rem;
+  }
+
+  .projects-heading {
+    font-size: 2rem;
+  }
+
+  /* Hide connection lines on mobile */
+  .connection-lines {
+    display: none;
+  }
+
+  /* Hide category row on mobile */
+  .category-row {
+    display: none;
+  }
+
+  /* Simple grid for projects */
+  .projects-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 0;
+    height: auto;
+  }
+
+  .project-card-tree {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100%;
+  }
+
+  .project-card-tree.expanded {
+    width: 100%;
+  }
+
+  .project-thumbnail-tree {
+    height: 160px;
+  }
+
+  .project-card-tree.expanded .project-thumbnail-tree {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-heading {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .project-title-tree {
+    font-size: 1rem;
+  }
+
+  .project-card-tree.expanded .project-title-tree {
+    font-size: 1.1rem;
+  }
+
+  .project-thumbnail-tree {
+    height: 120px;
+  }
+
+  .project-card-tree.expanded .project-thumbnail-tree {
+    height: 140px;
+  }
+}

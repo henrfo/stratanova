@@ -13,15 +13,19 @@ class ProjectLoader {
     }
   }
 
-  async loadProjectData(filename) {
+  async loadProjectData(projectConfig) {
     try {
+      // Handle both old format (string) and new format (object)
+      const filename = typeof projectConfig === 'string' ? projectConfig : projectConfig.file;
+      const categories = typeof projectConfig === 'string' ? [] : (projectConfig.categories || []);
+
       const response = await fetch(`projects/${filename}`);
       if (!response.ok) return null;
-      
+
       const html = await response.text();
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
-      
+
       // Extract data from existing HTML structure
       const title = doc.querySelector('.project-hero h1')?.textContent?.trim();
       const statusElement = doc.querySelector('.meta-value');
@@ -29,20 +33,21 @@ class ProjectLoader {
       const tags = Array.from(doc.querySelectorAll('.project-tags .tag')).map(
         tag => tag.textContent.trim()
       );
-      
+
       // Extract first paragraph as description
       const description = doc.querySelector('.project-section p')?.textContent?.trim();
-      
+
       // Extract filename as ID (remove .html extension)
       const id = filename.replace('.html', '');
-      
+
       return {
         id: id,
         title: title,
         description: description,
         status: status,
         image: this.getProjectImage(id),
-        tags: tags
+        tags: tags,
+        categories: categories
       };
     } catch (error) {
       return null;
@@ -109,14 +114,14 @@ class ProjectLoader {
     if (!projectsGrid) return;
 
     await this.loadProjectConfig();
-    
-    const projectPromises = this.projectFiles.map(filename => this.loadProjectData(filename));
+
+    const projectPromises = this.projectFiles.map(projectConfig => this.loadProjectData(projectConfig));
     const projects = await Promise.all(projectPromises);
     const validProjects = projects.filter(project => project !== null);
-    
+
     // Sort projects by status
     const sortedProjects = this.sortProjects(validProjects);
-    
+
     projectsGrid.innerHTML = '';
     sortedProjects.forEach(project => {
       projectsGrid.innerHTML += this.createProjectCard(project);
