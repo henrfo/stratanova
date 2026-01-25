@@ -85,7 +85,7 @@
 <footer class="footer">
 <div class="footer-content">
 <div class="copyright">
-&copy; 2025 Strata Nova AS
+&copy; <span id="copyright-year"></span> Strata Nova AS
 </div>
 <div class="contact">
 <a href="mailto:contact@stratanova.no">contact@stratanova.no</a>
@@ -115,6 +115,9 @@
       }
     });
   }
+
+  // Set copyright year dynamically
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
 </script>
 
 </body>
