@@ -44,7 +44,7 @@ function findNearbyPoint(from) {
 let current = randomPoint();
 let next = findNearbyPoint(current);
 let progress = 0;
-let duration = 240;
+let duration = 600;
 
 function drawBackgroundNet() {
   for (let i = 0; i < points.length; i++) {
@@ -115,7 +115,7 @@ function drawNeuronEffect() {
     current = next;
     next = findNearbyPoint(current);
     progress = 0;
-    duration = 220 + Math.random() * 100;
+    duration = 500 + Math.random() * 300;
   }
 }
 
