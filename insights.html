@@ -220,7 +220,7 @@
       }
     ];
 
-    linkedInPosts.forEach(post => {
+    linkedInPosts.slice().reverse().forEach(post => {
       const el = document.createElement("div");
       el.className = "post";
       const dateFormatted = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
