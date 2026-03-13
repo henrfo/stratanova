@@ -6,7 +6,10 @@
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    background: #000;
+    background:
+      radial-gradient(ellipse at 15% 85%, rgba(18, 8, 50, 0.75) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 15%, rgba(6, 18, 55, 0.65) 0%, transparent 55%),
+      #030305;
     color: white;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
@@ -23,6 +26,7 @@
     left: 0;
     z-index: 0;
     pointer-events: none;
+    opacity: 0.55;
   }
   
   /* ==========================================================================
@@ -339,7 +343,7 @@
   .footer {
     width: 100%;
     padding: 2rem 0;
-    margin-top: 4rem;
+    margin-top: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
   

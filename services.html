@@ -24,9 +24,12 @@
   /* Service card grid styles similar to people page */
   .content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     max-width: 1200px !important;
     margin: 0 auto !important;
-    padding: 100px 2rem 2rem 2rem !important;
+    padding: 2rem !important;
     width: 100% !important;
   }
 
@@ -231,7 +234,7 @@
     <h1>Services</h1>
     
     <div class="services-grid">
-      <!-- Service cards will be automatically generated here by serviceLoader.js -->
+      <!-- Service cards are dynamically loaded by serviceLoader.js -->
     </div>
   </div>
   

@@ -17,7 +17,10 @@
       padding: 0;
       width: 100%;
       height: 100%;
-      background: #000;
+      background:
+        radial-gradient(ellipse at 15% 85%, rgba(18, 8, 50, 0.75) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(6, 18, 55, 0.65) 0%, transparent 55%),
+        #030305;
       color: #dfefff;
       font-family: 'Inter', sans-serif;
       font-weight: 300;
@@ -228,7 +231,7 @@
       points = [];
 
       const area = width * height;
-      const density = 0.00020; // Try values from 0.00008 (sparse) to 0.0002 (dense)
+      const density = 0.00020;
       const pointCount = Math.floor(area * density);
 
       for (let i = 0; i < pointCount; i++) {
@@ -236,7 +239,8 @@
           x: Math.random() * width,
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * 0.15,
-          vy: (Math.random() - 0.5) * 0.15
+          vy: (Math.random() - 0.5) * 0.15,
+          z: Math.random()
         });
       }
     }
@@ -251,9 +255,12 @@
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
+        const radius = 0.8 + p.z * 0.7;
+        const opacity = 0.2 + p.z * 0.8;
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-        ctx.fillStyle = '#99bbdd';
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(153, 187, 221, ${opacity})`;
         ctx.fill();
 
         for (let j = i + 1; j < points.length; j++) {
@@ -262,11 +269,13 @@
           let dy = p.y - q.y;
           let dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 150) {
+            const avgZ = (p.z + q.z) / 2;
+            const lineOpacity = (1 - dist / 150) * (0.15 + avgZ * 0.85);
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(160, 200, 255, ${1 - dist / 120})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(160, 200, 255, ${lineOpacity})`;
+            ctx.lineWidth = 0.15 + avgZ * 0.85;
             ctx.stroke();
           }
         }

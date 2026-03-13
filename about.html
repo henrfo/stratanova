@@ -17,9 +17,19 @@
 
   <style>
     /* Keeping only the styles specific to about.html that aren't in main.css */
-    
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
     /* Wider text for about page only */
     .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       max-width: 1000px !important;
     }
     
@@ -31,7 +41,7 @@
     
     p {
       max-width: 800px !important;
-      text-align: center !important;
+      text-align: left !important;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -50,10 +60,6 @@
       text-align: center !important;
     }
     
-    /* Center the tagline quote */
-    p:first-of-type {
-      text-align: center !important;
-    }
     
     /* Additional heading style */
     h2 {
@@ -147,6 +153,7 @@
 </head>
 <body>
   <canvas id="bg"></canvas>
+<div class="page-wrapper">
 
 <!-- Top Navigation (Visible on subpages) -->
 <nav class="top-nav">
@@ -239,5 +246,6 @@
     // Set copyright year dynamically
     document.getElementById('copyright-year').textContent = new Date().getFullYear();
   </script>
+</div>
 </body>
 </html>

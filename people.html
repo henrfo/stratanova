@@ -16,12 +16,21 @@
   <link rel="stylesheet" href="styles/main.css">
 
   <style>
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
     /* People card grid styles inspired by projects */
     .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       max-width: 1200px !important;
       margin: 0 auto !important;
-      padding-left: 2rem !important;
-      padding-right: 2rem !important;
+      padding: 2rem !important;
     }
 
     h1 {
@@ -32,11 +41,12 @@
     /* People grid - left aligned cards */
     .people-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, 350px);
+      grid-template-columns: repeat(2, minmax(300px, 400px));
       gap: 2rem;
       width: 100%;
       justify-content: center;
     }
+
 
     .person-card {
       background: rgba(20, 40, 80, 0.3);
@@ -46,10 +56,10 @@
       position: relative;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
-      display: block;
+      display: flex;
+      flex-direction: column;
       color: inherit;
       width: 100%;
-      max-width: 350px;
     }
 
     .person-card:hover {
@@ -84,13 +94,41 @@
     .person-content {
       padding: 1.5rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .person-about {
+      margin-top: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .person-about a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .person-about a:hover {
+      color: white;
+    }
+
+    .person-email {
+      margin-top: auto;
+      margin-bottom: 0.75rem;
+    }
+
+    .person-social {
+      margin-top: 0;
     }
 
     .person-name {
       font-family: 'Exo 2', sans-serif;
       font-size: 1.3rem;
       font-weight: 300;
-      margin: 0 0 0.5rem 0;
+      margin: 0;
       color: white;
       line-height: 1.4;
     }
@@ -212,6 +250,7 @@
 </head>
 <body>
   <canvas id="bg"></canvas>
+<div class="page-wrapper">
 
 <!-- Top Navigation (Visible on subpages) -->
 <nav class="top-nav">
@@ -241,15 +280,11 @@
         </div>
         <div class="person-content">
           <h2 class="person-name">Henrik</h2>
-          <div class="person-contact">
-            <div class="person-email">
-              <a href="https://henrfo.github.io/" target="_blank" rel="noopener noreferrer">About Henrik</a>
-            </div>
+          <div class="person-about">
+            <a href="https://henrfo.github.io/" target="_blank" rel="noopener noreferrer">About Henrik</a>
           </div>
-          <div class="person-contact">
-            <div class="person-email">
-              <a href="mailto:henrik@stratanova.no">henrik@stratanova.no</a>
-            </div>
+          <div class="person-email">
+            <a href="mailto:henrik@stratanova.no">henrik@stratanova.no</a>
           </div>
           <div class="person-social">
             <a href="https://www.linkedin.com/in/henrikformoe/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
@@ -272,10 +307,8 @@
         </div>
         <div class="person-content">
           <h2 class="person-name">Jørgen</h2>
-          <div class="person-contact">
-            <div class="person-email">
-              <a href="mailto:jorgen@stratanova.no">jorgen@stratanova.no</a>
-            </div>
+          <div class="person-email">
+            <a href="mailto:jorgen@stratanova.no">jorgen@stratanova.no</a>
           </div>
           <div class="person-social">
             <a href="https://www.linkedin.com/in/j%C3%B8rgen-skontorp-b35963bb/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
@@ -332,5 +365,6 @@
     // Set copyright year dynamically
     document.getElementById('copyright-year').textContent = new Date().getFullYear();
   </script>
+</div>
 </body>
 </html>

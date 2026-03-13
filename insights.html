@@ -13,19 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Exo+2:wght@100;200;300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css" />
   <style>
-    /* Basic structure styles */
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
-      background: #000;
+      min-height: 100%;
       color: white;
       font-family: 'Inter', sans-serif;
       font-weight: 300;
     }
 
-    /* Page wrapper for sticky footer */
     .page-wrapper {
       min-height: 100vh;
       display: flex;
@@ -39,48 +36,57 @@
       z-index: 0;
     }
 
-    /* Content styles */
     .content {
-      flex: 1; /* This makes it take up available space and push footer down */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     h1 {
       text-align: center;
     }
 
-    .post {
-      margin: 0 auto 3rem auto;
-      max-width: 700px;
+    /* Feed container */
+    .feed {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      gap: 3rem;
     }
 
-    .post h2 {
-      font-size: 1.4rem;
-      color: #dfefff;
-      font-weight: 500;
-      margin-bottom: 0.2rem;
+    /* Post card */
+    .post {
+      background: rgba(20, 40, 80, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.3s ease;
+      text-align: left;
+    }
+
+    .post:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
     .post .date {
-      font-size: 0.9rem;
-      color: #888;
-      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 0.5rem;
     }
 
-    .post p {
-      color: #ccc;
-      line-height: 1.6;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
+    .post h2 {
+      font-size: 1.2rem;
+      color: #dfefff;
+      font-weight: 400;
+      margin: 0 0 0.6rem 0;
       text-align: center;
-    }
-
-    .post p span {
-      display: inline-block;
-      text-align: left;
-      max-width: 600px;
     }
 
     .post h2 a {
@@ -92,7 +98,14 @@
       text-decoration: underline;
     }
 
-    /* Footer styles */
+    .post p {
+      color: #bbb;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Footer */
     .footer {
       width: 100%;
       padding: 1.5rem 0;
@@ -122,7 +135,6 @@
       color: white;
     }
 
-    /* Mobile responsive adjustments */
     @media (max-width: 768px) {
       .content {
         padding: 100px 1rem 2rem 1rem;
@@ -133,13 +145,8 @@
         margin-bottom: 2rem;
       }
 
-      .post p span {
-        max-width: 100%;
-        padding: 0 0.5rem;
-      }
-
       .post h2 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .footer-content {
@@ -155,12 +162,8 @@
         letter-spacing: 1px;
       }
 
-      .post h2 {
-        font-size: 1.1rem;
-      }
-
       .post .date {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -188,7 +191,7 @@
   <!-- Insights Content -->
   <div class="content">
     <h1>Insights</h1>
-    <div id="insights-posts"></div>
+    <div id="insights-posts" class="feed"></div>
   </div>
 
   <footer class="footer">
@@ -231,8 +234,8 @@
       el.className = "post";
       const dateFormatted = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
       el.innerHTML = `
-        <h2>${post.title}</h2>
         <div class="date">${dateFormatted}</div>
+        <h2>${post.title}</h2>
         <p>${post.body}</p>
       `;
       postsContainer.appendChild(el);
