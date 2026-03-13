@@ -52,11 +52,6 @@ class ServiceLoader {
           <p class="service-description">
             ${service.description}
           </p>
-          <div class="service-features">
-            <ul>
-              ${service.features.map(feature => `<li>${feature}</li>`).join('')}
-            </ul>
-          </div>
         </div>
       </div>
     `;
