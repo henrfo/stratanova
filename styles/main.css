@@ -184,11 +184,14 @@
   }
   
   h1 {
-    font-size: 2.2rem;
-    margin-top: 4rem;
+    font-size: 1.8rem;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
+    margin-top: 0;
     margin-bottom: 2rem;
-    text-transform: uppercase;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
   
   h2 {
