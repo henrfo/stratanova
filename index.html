@@ -297,8 +297,14 @@
     if (menuToggle && navMenu) {
       menuToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');
-        // Change hamburger icon to X when menu is open
         menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.textContent = '☰';
+        }
       });
     }
 
