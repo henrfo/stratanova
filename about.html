@@ -29,12 +29,24 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 920px !important;
-      padding: 2rem 2rem !important;
+      max-width: 1000px !important;
+      margin: 0 auto !important;
+      padding: 2rem !important;
+      box-sizing: border-box !important;
     }
 
-    p, ol, ul {
-      text-align: left !important;
+    .about-text-wrapper {
+      width: 100%;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .about-text-wrapper p,
+    .about-text-wrapper ol,
+    .about-text-wrapper ul {
+      max-width: 100% !important;
     }
     
     
@@ -153,17 +165,18 @@
 <div class="content">
   <section id="about">
   
+  <div class="about-text-wrapper">
   <h1>About Strata Nova AS</h1>
+    <p><strong>We make sense of human experience through data, and make data meaningful for humans.</strong></p>
 
-  <p><strong>We make sense of human experience through data, and make data meaningful for humans.</strong></p>
+    <p>Strata Nova is a research startup working at the intersection of data, machine learning, and research methods.</p>
 
-  <p>Strata Nova is a research startup working at the intersection of data, machine learning, and research methods.</p>
+    <p>We take observations, turn them into data, extract what matters, and translate it back into something people can use. That loop — and how to do it rigorously — is what drives our work.</p>
 
-  <p>We take observations, turn them into data, extract what matters, and translate it back into something people can use. That loop — and how to do it rigorously — is what drives our work.</p>
+    <p>Our team combines backgrounds in cognitive neuroscience, psychology, computer science, and business analytics. We care as much about the method as the result — because how you collect, structure, and analyse data shapes everything downstream.</p>
 
-  <p>Our team combines backgrounds in cognitive neuroscience, psychology, computer science, and business analytics. We care as much about the method as the result — because how you collect, structure, and analyse data shapes everything downstream.</p>
-
-  <p>We work openly and build on what we learn.</p>
+    <p>We work openly and build on what we learn.</p>
+  </div>
 
   </section>
   </div>
