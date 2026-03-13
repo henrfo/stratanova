@@ -43,8 +43,8 @@ function findNearbyPoint(from) {
 
 let current = randomPoint();
 let next = findNearbyPoint(current);
-let progress = 0;
-let duration = 600;
+let pulseStart = performance.now();
+let pulseDuration = 10000;
 
 function drawBackgroundNet() {
   for (let i = 0; i < points.length; i++) {
@@ -79,11 +79,13 @@ function drawBackgroundNet() {
 }
 
 function drawNeuronEffect() {
-  const pulse = 2 + Math.sin(progress / duration * Math.PI) * 2.1;
+  const elapsed = performance.now() - pulseStart;
+  const t = Math.min(elapsed / pulseDuration, 1);
+  const pulse = 2 + Math.sin(t * Math.PI) * 2.1;
 
   ctx.beginPath();
   ctx.arc(current.x, current.y, pulse, 0, Math.PI * 2);
-  ctx.fillStyle = `rgba(255, 255, 255, ${0.14 + 0.24 * Math.sin(progress / duration * Math.PI)})`;
+  ctx.fillStyle = `rgba(255, 255, 255, ${0.14 + 0.24 * Math.sin(t * Math.PI)})`;
   ctx.shadowColor = '#ffffff';
   ctx.shadowBlur = 8;
   ctx.fill();
@@ -97,7 +99,7 @@ function drawNeuronEffect() {
       ctx.beginPath();
       ctx.moveTo(current.x, current.y);
       ctx.lineTo(p.x, p.y);
-      ctx.strokeStyle = `rgba(255, 255, 255, ${0.07 + 0.14 * Math.sin(progress / duration * Math.PI)})`;
+      ctx.strokeStyle = `rgba(255, 255, 255, ${0.07 + 0.14 * Math.sin(t * Math.PI)})`;
       ctx.lineWidth = 0.55;
       ctx.stroke();
 
@@ -110,12 +112,11 @@ function drawNeuronEffect() {
     }
   }
 
-  progress++;
-  if (progress >= duration) {
+  if (elapsed >= pulseDuration) {
     current = next;
     next = findNearbyPoint(current);
-    progress = 0;
-    duration = 500 + Math.random() * 300;
+    pulseStart = performance.now();
+    pulseDuration = 8000 + Math.random() * 7000;
   }
 }
 
