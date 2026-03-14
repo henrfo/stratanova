@@ -31,6 +31,7 @@
       max-width: 1200px !important;
       margin: 0 auto !important;
       padding: 2rem !important;
+      padding-top: 90px !important;
     }
 
     h1 {
@@ -257,7 +258,6 @@
     <a href="/">
       <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
     </a>
-    <button class="mobile-menu-toggle">☰</button>
     <ul>
       <li><a href="contact">Contact</a></li>
       <li><a href="about">About</a></li>
@@ -326,30 +326,6 @@
   
   <script src="scripts/animation/neuronAnimation.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const navMenu = document.querySelector('.top-nav ul');
-      
-      if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function(e) {
-          e.stopPropagation();
-          navMenu.classList.toggle('active');
-          // Change hamburger icon to X when menu is open
-          menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-          if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            menuToggle.textContent = '☰';
-          }
-        });
-      }
-    });
-  </script>
-  
   <footer class="footer">
     <div class="footer-content">
       <div class="copyright">

@@ -29,6 +29,7 @@
     align-items: center !important;
     text-align: center !important;
     padding: 2rem 1rem !important;
+    padding-top: 90px !important;
   }
   
   
@@ -48,7 +49,6 @@
     <a href="/">
       <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
     </a>
-    <button class="mobile-menu-toggle">☰</button>
     <ul>
       <li><a href="contact">Contact</a></li>
       <li><a href="about">About</a></li>
@@ -81,38 +81,7 @@
 <script src="scripts/animation/neuronAnimation.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.top-nav ul');
-
-    if (menuToggle && navMenu) {
-      menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        navMenu.classList.toggle('active');
-        menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
-          navMenu.classList.remove('active');
-          menuToggle.textContent = '☰';
-        }
-      });
-
-      // Close menu when clicking a menu item
-      const menuItems = navMenu.querySelectorAll('a');
-      menuItems.forEach(item => {
-        item.addEventListener('click', function() {
-          navMenu.classList.remove('active');
-          menuToggle.textContent = '☰';
-        });
-      });
-    }
-
-    // Set copyright year dynamically
-    document.getElementById('copyright-year').textContent = new Date().getFullYear();
-  });
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
 </script>
 
 </body>

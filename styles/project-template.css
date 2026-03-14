@@ -173,6 +173,7 @@
   .project-hero {
     min-height: 200px;
     padding: 1.5rem 1rem;
+    padding-top: calc(90px + 1.5rem) !important;
   }
 
   .project-hero h1 {

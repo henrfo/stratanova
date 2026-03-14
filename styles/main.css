@@ -394,15 +394,40 @@
       text-align: center;
     }
 
-    /* Navigation adjustments */
-    .top-nav ul {
-      flex-direction: column;
-      gap: 1rem;
-    }
-
     /* Adjust padding for smaller screens */
     .content {
-      padding-top: 150px !important; /* Reduced spacing between menu and content on mobile */
+      padding-top: 90px !important;
+    }
+
+    /* Scrollable horizontal nav — no JS needed */
+    .top-nav {
+      padding: 10px 1rem !important;
+    }
+
+    .top-nav ul {
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+      gap: 1.2rem !important;
+      padding: 0 0.5rem !important;
+      padding-right: 3rem !important;
+      justify-content: flex-start !important;
+      -webkit-mask-image: linear-gradient(to right, white 75%, transparent 100%) !important;
+      mask-image: linear-gradient(to right, white 75%, transparent 100%) !important;
+    }
+
+    .top-nav ul::-webkit-scrollbar {
+      display: none;
+    }
+
+    .top-nav ul li a {
+      font-size: 0.85rem !important;
+      white-space: nowrap !important;
+    }
+
+    .top-nav::after {
+      display: none !important;
     }
   }
   
@@ -467,107 +492,3 @@
     }
   }
 
-/* ==========================================================================
-   Mobile Navigation Enhancements
-   ========================================================================== */
-
-/* Hide hamburger menu on desktop */
-.mobile-menu-toggle {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  /* Mobile menu base state - hidden by default */
-  .top-nav ul {
-    /* Override desktop centering styles */
-    justify-content: flex-start !important;
-    align-items: stretch !important;
-    gap: 0 !important;
-    flex: none !important;
-    flex-wrap: nowrap !important;
-
-    /* Hidden by default - completely out of layout */
-    display: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* Active state - vertical dropdown below nav */
-  .top-nav ul.active {
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 9998 !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-
-    background-color: rgba(0, 0, 0, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-
-    padding: 0.5rem 0 !important;
-    gap: 0 !important;
-    margin: 0 !important;
-    list-style: none !important;
-  }
-
-  .top-nav ul.active li {
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0 !important;
-  }
-
-  .top-nav ul.active li a {
-    display: block !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 0.75rem 1rem !important;
-    text-align: center !important;
-    border-radius: 0 !important;
-    background-color: transparent !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    color: #ffffff !important;
-    font-size: 0.9rem !important;
-    transition: background-color 0.2s ease !important;
-  }
-
-  .top-nav ul.active li:last-child a {
-    border-bottom: none !important;
-  }
-
-  .top-nav ul.active li a:hover,
-  .top-nav ul.active li a:active {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-  }
-
-  /* Menu toggle button styling */
-  .mobile-menu-toggle {
-    display: flex !important;
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 10000;
-    min-width: 60px;
-    min-height: 60px;
-    padding: 12px;
-    align-items: center;
-    justify-content: center;
-    pointer-events: auto;
-    touch-action: manipulation;
-  }
-
-  /* Improve top nav appearance on mobile */
-  .top-nav {
-    padding: 10px 1rem !important;
-    text-align: center !important;
-  }
-}

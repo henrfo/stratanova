@@ -32,6 +32,7 @@
       max-width: 1000px !important;
       margin: 0 auto !important;
       padding: 2rem !important;
+      padding-top: 90px !important;
       box-sizing: border-box !important;
     }
 
@@ -97,6 +98,7 @@
       .content {
         max-width: 100% !important;
         padding: 0 1rem !important;
+        padding-top: 90px !important;
       }
 
       h1, h2, h3 {
@@ -150,7 +152,6 @@
   <a href="/">
     <img src="assets/stratanova_logo_symbol_only copy_quadratic.png" alt="Strata Nova symbol" class="logo-nav" />
   </a>
-  <button class="mobile-menu-toggle">☰</button>
   <ul>
     <li><a href="contact">Contact</a></li>
     <li><a href="about">About</a></li>
@@ -182,45 +183,6 @@
   </div>
 
   <script src="scripts/animation/neuronAnimation.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const navMenu = document.querySelector('.top-nav ul');
-
-      if (menuToggle && navMenu) {
-        // Toggle menu on button click - don't use stopPropagation
-        menuToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          navMenu.classList.toggle('active');
-          menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Close menu when clicking anywhere (document handles ALL clicks)
-        document.addEventListener('click', function(e) {
-          // If click is on the toggle button, do nothing (button already toggled it)
-          if (menuToggle.contains(e.target)) {
-            return;
-          }
-
-          // If click is outside menu and menu is open, close it
-          if (!navMenu.contains(e.target) && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            menuToggle.textContent = '☰';
-          }
-        });
-
-        // Close menu when clicking a menu item
-        const menuItems = navMenu.querySelectorAll('a');
-        menuItems.forEach(item => {
-          item.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            menuToggle.textContent = '☰';
-          });
-        });
-      }
-    });
-  </script>
 
   <footer class="footer">
     <div class="footer-content">
