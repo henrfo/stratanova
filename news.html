@@ -229,7 +229,7 @@
     linkedInPosts.slice().reverse().forEach(post => {
       const el = document.createElement("div");
       el.className = "post";
-      const dateFormatted = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+      const dateFormatted = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
       el.innerHTML = `
         <div class="date">${dateFormatted}</div>
         <h2>${post.title}</h2>
