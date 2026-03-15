@@ -47,7 +47,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     width: 100%;
-    justify-items: start;
+    justify-items: center;
   }
 
   .service-card {
@@ -166,9 +166,9 @@
   @media (max-width: 768px) {
     .services-grid {
       grid-template-columns: 1fr;
-      max-width: 360px;
-      margin: 0 auto;
+      padding: 0 1rem;
       width: 100%;
+      box-sizing: border-box;
     }
 
     .services-grid .service-card:nth-child(2) {
