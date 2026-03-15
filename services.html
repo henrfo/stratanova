@@ -38,6 +38,7 @@
     font-family: 'Exo 2', sans-serif;
     font-weight: 300;
     text-transform: uppercase;
+    text-align: center;
   }
 
   /* Services grid - similar to people grid */
@@ -165,11 +166,9 @@
   @media (max-width: 768px) {
     .services-grid {
       grid-template-columns: 1fr;
-      justify-items: center;
-    }
-
-    .service-card {
+      max-width: 360px;
       margin: 0 auto;
+      width: 100%;
     }
 
     h1 {
