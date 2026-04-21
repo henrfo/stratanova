@@ -21,10 +21,6 @@
       "categories": ["geospatial"]
     },
     {
-      "file": "strokeml.html",
-      "categories": ["models"]
-    },
-    {
       "file": "quantumml.html",
       "categories": ["models"]
     }
